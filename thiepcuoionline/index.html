@@ -1,0 +1,1967 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thiệp Cưới - Trung Tá & Hoàng Vi</title>
+
+  <!-- Favicon (Logo ở thanh địa chỉ) -->
+  <link rel="icon" href="images/logo_damcuoitrantahoangvi.png" type="image/png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Noto+Serif+VN:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* ========== Reset cơ bản ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Noto Serif VN', serif;
+      background: linear-gradient(120deg, #fdf4f5 30%, #ffffff 100%);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    :root {
+      --main-color: #c9302c;       /* Màu đỏ nhấn */
+      --secondary-color: #ffe5e5;  /* Màu nền nhạt */
+      --text-color: #333;
+      --heading-color: #c9302c;
+      --section-spacing: 60px;
+      --container-width: 900px;
+
+      --primary-shadow: rgba(201,48,44,0.3);
+      --hover-color: #ac2925;
+    }
+
+    /* ========== Preloader ========== */
+    #preloader {
+      position: fixed;
+      z-index: 9999;
+      background: #fff;
+      width: 100%;
+      height: 100vh;
+      top: 0; 
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .loader {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid var(--main-color);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 10px;
+    }
+    @keyframes spin {
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    #preloader p {
+      font-size: 1.2rem;
+      color: var(--text-color);
+    }
+
+   /* ========== Logo nổi góc trái (đã tăng kích thước) ========== */
+.logo-floating {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 9000;
+}
+.logo-floating img {
+  width: 150px; /* Tăng kích thước lên 80px */
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.logo-floating img:hover {
+  transform: scale(1.05);
+}
+
+    /* ========== Music Toggle Button ========== */
+    .music-control {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9000;
+    }
+    .music-btn {
+      background-color: var(--main-color);
+      color: #fff;
+      border: none;
+      padding: 10px 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+    .music-btn:hover {
+      background-color: var(--hover-color);
+    }
+
+    /* ========== Nút Menu ========== */
+    .floating-menu {
+      position: fixed;
+      bottom: 80px; /* cách nút back-to-top 1 đoạn */
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .menu-toggle {
+      background-color: var(--main-color);
+      color: #fff;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 5px;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .menu-toggle:hover {
+      background-color: var(--hover-color);
+    }
+    .menu-content {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+    }
+    .menu-content.show {
+      display: flex;
+    }
+    .menu-content a {
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    .menu-content a:hover {
+      color: var(--main-color);
+    }
+
+    /* ========== Hoa rơi ========== */
+    #flower-container {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 8000;
+      overflow: hidden;
+    }
+    .flower {
+      animation-fill-mode: forwards;
+      position: absolute;
+      width: 40px;
+      height: 40px;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+
+    /* ========== Sparkle ========== */
+    #sparkle-container {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 8500;
+      overflow: hidden;
+    }
+    .sparkle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, #fff, #f2f2f2 60%, rgba(255,255,255,0) 70%);
+      border-radius: 50%;
+      animation: sparkle 2.5s infinite linear;
+      opacity: 0.8;
+    }
+    @keyframes sparkle {
+      0% {
+        transform: scale(0.8);
+        opacity: 0.8;
+      }
+      50% {
+        transform: scale(1.4);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.6);
+        opacity: 0.8;
+      }
+    }
+
+    /* ========== Floating Hearts ========== */
+    #hearts-container {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 7500;
+      overflow: hidden;
+    }
+    .heart {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-image: url("https://cdn-icons-png.flaticon.com/512/2107/2107952.png");
+      background-size: cover;
+      animation: floatHearts 6s linear infinite;
+    }
+    @keyframes floatHearts {
+      0% {
+        transform: translateY(120vh) scale(0.8);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(50vh) scale(1);
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(0.8);
+        opacity: 0;
+      }
+    }
+
+    /* ========== Hero Section ========== */
+    .hero-section {
+      width: 100%;
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      overflow: hidden;
+      background: url("images/anhbia02.JPG") center center no-repeat;
+      background-size: cover;
+      padding-top: 6rem;
+    }
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url("images/anhbia02.JPG") center center no-repeat;
+      background-size: cover;
+      transform-origin: center;
+      animation: kenBurns 25s ease-in-out infinite alternate;
+      z-index: -2;
+    }
+    @keyframes kenBurns {
+      0%   { transform: scale(1);   }
+      50%  { transform: scale(1.1); }
+      100% { transform: scale(1);   }
+    }
+    .hero-section::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      animation: colorShift 10s infinite alternate;
+      mix-blend-mode: screen;
+    }
+    @keyframes colorShift {
+      0% {
+        background: radial-gradient(circle at center, rgba(255,200,200,0.2), transparent 70%);
+      }
+      50% {
+        background: radial-gradient(circle at center, rgba(255,140,140,0.25), transparent 70%);
+      }
+      100% {
+        background: radial-gradient(circle at center, rgba(255,180,180,0.2), transparent 70%);
+      }
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0; 
+      left: 0;
+      width: 100%; 
+      height: 100%;
+      background-color: rgba(0,0,0,0.35);
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      text-align: center;
+      color: #fff;
+      padding: 20px;
+      z-index: 1;
+      width: 90%;
+      max-width: 600px;
+      margin: 0 auto;
+      animation: fadeIn 1.5s ease;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to   {opacity: 1;}
+    }
+    .countdown {
+      background-color: rgba(255, 255, 255, 0.15);
+      padding: 10px 20px;
+      border-radius: 8px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .countdown p {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #fff;
+      font-size: 1rem;
+    }
+    #countdown-timer {
+      font-size: 1rem;
+      color: #fff;
+    }
+    .hero-couple-name {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
+      margin-bottom: 5px;
+      color: #ffebe5;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+    }
+
+    /* ========== Box "THƯ MỜI TIỆC CƯỚI" ========== */
+    .hero-invite-box {
+      position: absolute;
+      left: 100px;
+      bottom: 20px;
+      z-index: 2;
+      background-color: rgba(159, 60, 2, 0.2);
+      backdrop-filter: blur(5px);
+      padding: 12px 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      color: #fff;
+      font-size: 1rem;
+      line-height: 1.4;
+      text-align: left;
+      max-width: 250px;
+      animation: shimmerBox 2.5s infinite;
+    }
+    @keyframes shimmerBox {
+      0% {box-shadow: 0 0 6px rgba(255,255,255,0.2);}
+      50% {box-shadow: 0 0 10px rgba(255,255,255,0.7);}
+      100% {box-shadow: 0 0 6px rgba(255,255,255,0.2);}
+    }
+    .hero-invite-box h3 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+      letter-spacing: 1px;
+    }
+    .hero-invite-box hr {
+      border: none;
+      border-bottom: 1px solid rgba(232, 138, 138, 0.5);
+      margin: 6px 0;
+    }
+    .hero-invite-box p {
+      margin-bottom: 5px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.95rem;
+      color: #f7f7f7;
+    }
+
+    /* Hiển thị hero-invite-box trên màn hình nhỏ (thay vì ẩn) */
+    @media (max-width: 768px) {
+      .hero-invite-box {
+        display: block;
+        left: 20px;
+        bottom: 20px;
+        max-width: 70%;
+        font-size: 0.9rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero-invite-box {
+        left: 10px;
+        bottom: 20px;
+        max-width: 60%;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* ========== Section Wrapper ========== */
+    main {
+      width: 100%;
+      margin: 0 auto;
+    }
+    .section-wrapper {
+      width: 100%;
+      max-width: var(--container-width);
+      margin: var(--section-spacing) auto; 
+      padding: 0 20px;
+      text-align: center;
+    }
+    .section-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: var(--heading-color);
+      margin-bottom: 30px;
+      display: inline-block;
+      position: relative;
+    }
+    .section-title::after {
+      content: "";
+      position: absolute;
+      display: block;
+      height: 3px;
+      background: var(--main-color);
+      width: 50%;
+      left: 25%;
+      bottom: -8px;
+      border-radius: 2px;
+    }
+
+    /* ========== FAMILY INFO BOX ========== */
+    .family-info-box {
+      background-color: #852004;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin: 20px auto 20px auto;
+      padding: 20px;
+      max-width: 720px;
+      position: relative;
+      overflow: hidden;
+    }
+    .family-info-box .quote {
+      font-style: italic;
+      margin-bottom: 30px;
+      color: #f2f2f2;
+      animation: fadeInUp 0.8s ease;
+    }
+    .family-info-container {
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr;
+      align-items: start;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    .family-info-container h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #000000;
+      text-transform: uppercase;
+    }
+    
+    .parents-info p {
+      font-size: 0.75rem;
+      margin: 3px 0;
+      color: #f2f2f2;
+      line-height: 1.4;
+    }
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .divider img {
+      width: 30px;
+      height: 30px;
+      opacity: 0.9;
+    }
+
+    /* ========== COUPLE SECTION (điều chỉnh responsive) ========== */
+    .couple-section {
+  display: flex;
+  flex-wrap: nowrap; /* Luôn 1 hàng */
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+  transform-origin: top center;
+}
+
+/* Mỗi cột vẫn 300px, nhưng ta sẽ scale cột khi màn hình nhỏ */
+.couple-column {
+  flex: 0 0 300px;
+  max-width: 300px;
+  background-color: #fff2e8;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+  text-align: center;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.couple-column:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+.couple-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #000000;
+  text-transform: uppercase;
+}
+.couple-name {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  color: var(--heading-color);
+  margin-bottom: 15px;
+}
+.couple-img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.couple-img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Khi màn hình nhỏ, scale toàn bộ .couple-section */
+@media (max-width: 600px) {
+  .couple-section {
+    transform: scale(0.8);  /* Thu nhỏ 80% */
+    transform-origin: top center;
+  }
+}
+
+    /* ========== Carousel 3 Ảnh ========== */
+    .carousel-section {
+      padding: 20px 0;
+    }
+    .carousel-3images {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .carousel-3images .carousel-item {
+      width: 30%;
+      position: relative;
+      transition: transform 0.3s;
+    }
+    .carousel-3images .carousel-item.center {
+      transform: scale(1.15);
+      z-index: 2;
+    }
+    .carousel-3images img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    /* ========== INVITATION (Thư Mời) ========== */
+    .invitation {
+  font-family: 'Times New Roman', serif;
+  background-color: #fff2e8;
+  border-radius: 8px;
+  padding: 25px 20px;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin: auto;
+}
+
+.invitation-container {
+  padding: 10px;
+}
+
+.invite-message {
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.invitation-details {
+  margin-top: 10px;
+}
+
+.detail-item {
+  margin-bottom: 15px;
+}
+
+.detail-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--heading-color);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.highlight-text {
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.lunar-date {
+  font-size: 0.9rem;
+  color: #777;
+  font-style: italic;
+  margin-top: 5px;
+}
+
+.schedule {
+  list-style-type: none;
+  padding: 0;
+  margin: 15px 0;
+}
+
+.schedule li {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.schedule .time {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+    /* ========== MAP & CALENDAR (kết hợp chung) ========== */
+    .map-calendar-section {
+      margin-bottom: 40px;
+    }
+    .map-calendar-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      align-items: flex-start;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .wedding-calendar-container,
+    .map-container {
+      flex: 1;
+      min-width: 300px; /* đảm bảo không quá nhỏ */
+      max-width: 550px; /* bạn có thể tùy chỉnh */
+    }
+
+    /* ========== WEDDING CALENDAR (thiết kế lại) ========== */
+    .wedding-calendar-container {
+      display: flex;
+      justify-content: center;
+    }
+    .calendar-frame {
+      display: inline-block;
+      background: #fff2e8;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 500px;
+      border: 3px dotted var(--main-color);
+    }
+    .calendar-decor-bottom {
+      position: absolute;
+      bottom: 8px; 
+      right: 8px;
+      color: var(--heading-color);
+      font-size: 1.2rem;
+      font-family: 'Dancing Script', cursive;
+      transform: rotate(-5deg);
+    }
+    .calendar-header {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: var(--heading-color);
+      position: relative;
+      z-index: 1;
+    }
+    .calendar-body {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #333;
+      font-size: 1.1rem;
+    }
+    .week {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      margin-bottom: 8px;
+    }
+    .day {
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      color: #555;
+      transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+      margin: 2px;
+    }
+    .day:hover {
+      transform: scale(1.1);
+      background-color: #fce9e9;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .blank {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .wedding-date {
+      position: relative;
+      font-weight: bold;
+      font-size: 1.3rem;
+      color: var(--heading-color);
+    }
+    .wedding-date::before {
+      content: "♥";
+      position: absolute;
+      font-size: 1.3rem;
+      color: var(--heading-color);
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* ========== MAP CONTAINER ========== */
+    .map-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .map-iframe-container {
+      width: 100%;
+      max-width: 550px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    /* ========== Album Cưới + Lightbox ========== */
+    .album-section {
+      margin-top: 40px;
+    }
+    .album-section h3 {
+      font-size: 1.3rem;
+      color: var(--heading-color);
+      margin: 30px 0 20px;
+      text-transform: uppercase;
+      position: relative;
+      display: inline-block;
+    }
+    .album-section h3::after {
+      content: "";
+      position: absolute;
+      display: block;
+      height: 3px;
+      background: var(--main-color);
+      width: 40%;
+      left: 30%;
+      bottom: -5px;
+      border-radius: 2px;
+    }
+    .wedding-album-landscape {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+    .wedding-album-landscape .album-item {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .wedding-album-landscape .album-item:hover {
+      transform: scale(1.01);
+    }
+    .wedding-album-landscape .album-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .wedding-album-vertical {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+    .wedding-album-vertical .album-item {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .wedding-album-vertical .album-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .wedding-album-vertical .album-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    /* Lightbox Overlay */
+    .lightbox-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9990;
+    }
+    .lightbox-overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border: 5px solid #fff;
+      border-radius: 8px;
+    }
+    .lightbox-overlay.show {
+      display: flex;
+      animation: fadeInOverlay 0.4s ease;
+    }
+    @keyframes fadeInOverlay {
+      from {opacity: 0;}
+      to   {opacity: 1;}
+    }
+
+    /* ========== QR SECTION ========== */
+    .qr-section {
+      margin-top: 40px;
+    }
+    .qr-section .section-title {
+      margin-bottom: 10px;
+    }
+    .qr-container {
+      background-color: #ffe8ed;
+      border: 2px dashed #fa8ca3;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 360px;
+      margin: 0 auto 30px;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .qr-container::before,
+    .qr-container::after {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-image: url("https://cdn-icons-png.flaticon.com/512/2107/2107952.png");
+      background-size: cover;
+      opacity: 0.8;
+    }
+    .qr-container::before {
+      top: 10px;
+      left: 10px;
+    }
+    .qr-container::after {
+      bottom: 10px;
+      right: 10px;
+      transform: rotate(15deg);
+    }
+    .qr-heading {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #c9302c;
+      margin-bottom: 5px;
+    }
+    .qr-bank-info {
+      font-size: 0.95rem;
+      color: #444;
+      margin: 5px 0 10px;
+      line-height: 1.4;
+    }
+    .qr-code {
+      max-width: 300px;
+      width: 250px;
+      height: 300px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .qr-code:hover {
+      transform: scale(1.05);
+    }
+    .qr-note {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    #momo-btn {
+      background-color: var(--main-color);
+      color: #fff;
+      padding: 10px 20px;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+      margin-top: 15px;
+      display: inline-block;
+      text-decoration: none;
+    }
+    #momo-btn:hover {
+      background-color: var(--hover-color);
+    }
+
+    /* ========== RSVP ========== */
+    .rsvp-section {
+      background-color: #fff;
+      margin-top: 40px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    .rsvp-section h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: var(--heading-color);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .rsvp-section form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .rsvp-section label {
+      font-weight: bold;
+    }
+    .rsvp-section input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .rsvp-section button {
+      background-color: var(--main-color);
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+    .rsvp-section button:hover {
+      background-color: var(--hover-color);
+    }
+
+    /* ========== FAQ SECTION (nếu có) ========== */
+    .faq-section {
+      background-color: #fefaf0;
+      margin-top: 40px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    .faq-section h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: var(--heading-color);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .faq-list {
+      list-style: none;
+      padding: 0;
+    }
+    .faq-item {
+      margin-bottom: 15px;
+    }
+    .faq-item h3 {
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 5px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .faq-item p {
+      margin-left: 10px;
+      font-size: 0.95rem;
+      display: none;
+      line-height: 1.4;
+      padding-left: 20px;
+    }
+    .faq-item.active p {
+      display: block;
+      animation: fadeInFaq 0.5s ease;
+    }
+    @keyframes fadeInFaq {
+      from {opacity: 0;}
+      to   {opacity: 1;}
+    }
+    .faq-links {
+      margin-top: 15px;
+    }
+    .faq-links li {
+      margin: 5px 0;
+    }
+    .faq-links a {
+      color: var(--main-color);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .faq-links a:hover {
+      color: var(--hover-color);
+    }
+
+    /* ========== DIGITAL GUESTBOOK ========== */
+    .guestbook-section {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .guestbook-section h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: var(--heading-color);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .guestbook-form {
+      max-width: 500px;
+      margin: 0 auto 30px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .guestbook-form input, .guestbook-form textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 0.95rem;
+    }
+    .guestbook-form button {
+      background-color: var(--main-color);
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+    .guestbook-form button:hover {
+      background-color: var(--hover-color);
+    }
+    .guestbook-messages {
+      margin-top: 20px;
+      text-align: left;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .guestbook-message {
+      background-color: #fef8f8;
+      padding: 10px 15px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 10px;
+    }
+    .guestbook-message .msg-name {
+      font-weight: bold;
+      color: var(--heading-color);
+    }
+    .guestbook-message .msg-text {
+      font-size: 0.95rem;
+      margin-top: 5px;
+    }
+
+    /* ========== THANKS & LỜI CHÚC ========== */
+    .best-wishes {
+      margin: 50px 0;
+      color: #555;
+      text-align: center;
+      line-height: 1.6;
+      background: #fef8f8;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      font-size: 1rem;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+      font-style: italic;
+    }
+
+    /* ========== Back to Top Button ========== */
+    #back-to-top {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      font-size: 18px;
+      background-color: var(--main-color);
+      color: #fff;
+      padding: 10px 14px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    #back-to-top:hover {
+      background-color: var(--hover-color);
+    }
+
+    /* ========== Scroll Animations ========== */
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+    [data-animate].active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    [data-animate="fade-in-left"] {
+      transform: translateX(-20px);
+    }
+    [data-animate="fade-in-left"].active {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    [data-animate="fade-in-right"] {
+      transform: translateX(20px);
+    }
+    [data-animate="fade-in-right"].active {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    [data-animate="fade-in-up"] {
+      transform: translateY(20px);
+    }
+    [data-animate="fade-in-up"].active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    [data-animate="fade-in-down"] {
+      transform: translateY(-20px);
+    }
+    [data-animate="fade-in-down"].active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    /* Zoom In custom */
+    [data-animate="zoom-in"] {
+      opacity: 0;
+      transform: scale(0.8);
+      transition: transform 0.8s ease, opacity 0.8s ease;
+    }
+    [data-animate="zoom-in"].active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ========== Modal xác nhận RSVP ========== */
+    .modal-bg {
+      position: fixed;
+      top: 0; 
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      z-index: 9999;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.3s ease, visibility 0.3s;
+    }
+    .modal-hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .modal-content {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 30px 20px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      animation: scaleIn 0.4s ease;
+    }
+    @keyframes scaleIn {
+      from { transform: scale(0.7); opacity: 0.5; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+    .modal-content h3 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: var(--heading-color);
+      margin-bottom: 10px;
+    }
+    .modal-content p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .modal-close-btn {
+      border: none;
+      background-color: var(--main-color);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .modal-close-btn:hover {
+      background-color: var(--hover-color);
+    }
+    .modal-close-icon {
+      position: absolute;
+      top: 10px; 
+      right: 15px;
+      font-size: 20px;
+      color: #999;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .modal-close-icon:hover {
+      color: var(--heading-color);
+    }
+
+    /* ========== RESPONSIVE etc. ========== */
+    @media (max-width: 992px) {
+      .hero-couple-name {
+        font-size: 2.4rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero-content {
+        width: 95%;
+      }
+      .hero-couple-name {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ========== Preloader ========== -->
+  <div id="preloader">
+    <div class="loader"></div>
+    <p>Đang tải...</p>
+  </div>
+
+  <!-- Logo nổi góc trái -->
+  <div class="logo-floating">
+    <img src="images/logo_damcuoitrantahoangvi.png" alt="Wedding Logo">
+  </div>
+
+  <!-- Nút bật/tắt nhạc -->
+  <div class="music-control">
+    <button id="music-toggle" class="music-btn">♪</button>
+  </div>
+
+  <!-- Container trái tim bồng bềnh -->
+  <div id="hearts-container"></div>
+
+  <!-- Hoa rơi -->
+  <div id="flower-container"></div>
+
+  <!-- Hiệu ứng lấp lánh -->
+  <div id="sparkle-container"></div>
+
+  <!-- Nhạc nền -->
+  <audio id="bg-music" src="nhacthiepmoi.mp3" autoplay loop></audio>
+
+  <!-- ========== Hero Section ========== -->
+  <header class="hero-section" id="top">
+    <div class="hero-overlay"></div>
+    
+    <!-- "THƯ MỜI TIỆC CƯỚI" -->
+    <div class="hero-invite-box">
+      <h3>THƯ MỜI TIỆC CƯỚI</h3>
+      <hr>
+      <p>CHỦ NHẬT - 11h00</p>
+      <p>18.05.2025</p>
+      <hr>
+    </div>
+
+    <div class="hero-content">
+      <!-- Countdown -->
+      <div class="countdown" data-animate="fade-in">
+        <p>Đếm ngược ngày bắt đầu...</p>
+        <div id="countdown-timer">
+          <span id="days">00</span> ngày
+          <span id="hours">00</span> giờ
+          <span id="minutes">00</span> phút
+          <span id="seconds">00</span> giây
+        </div>
+      </div>
+
+      <!-- Tên cặp đôi -->
+      <h1 class="hero-couple-name" data-animate="fade-in-down">
+        Trung Tá &nbsp; ♥ &nbsp; Hoàng Vi
+      </h1>
+    </div>
+  </header>
+
+  <main>
+    <!-- Thông Tin Gia Đình -->
+    <section class="section-wrapper" data-animate="fade-in-up">
+      <div class="family-info-box">
+        <p class="quote">
+          “Hôn nhân là chuyện cả đời, yêu người vừa ý, cưới người mình thương...”
+        </p>
+
+        <div class="family-info-container">
+          <!-- Nhà trai -->
+          <div class="left-column">
+            <h3>Nhà Trai</h3>
+            <div class="parents-info">
+              <p><strong>Ông Trần Văn Đoàn</strong></p>
+              <p><strong>Bà Nguyễn Lệ Quyên</strong></p>
+              <p>Khóm 7, Phường 1, Tx. Ngã Năm, Tp. Sóc Trăng</p>
+            </div>
+          </div>
+
+          <!-- Icon trái tim -->
+          <div class="divider">
+            <img src="https://cdn-icons-png.flaticon.com/512/2107/2107989.png" alt="heart-icon" />
+          </div>
+
+          <!-- Nhà gái -->
+          <div class="right-column">
+            <h3>Nhà Gái</h3>
+            <div class="parents-info">
+              <p><strong>Ông Võ Thanh Hùng</strong></p>
+              <p><strong>Bà Trương Thị Kim Quyên</strong></p>
+              <p>Đội 4, Thôn 2, Xã Eatrul, Krông Bông, Đăk Lăk</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cô dâu - Chú rể -->
+        <div class="couple-section">
+          <div class="couple-column">
+            <div class="couple-label">Chú Rể</div>
+            <div class="couple-name">Trần Trung Tá</div>
+            <img class="couple-img" src="images/hinh_chure01.jpg" alt="Ảnh Chú Rể" />
+          </div>
+          <div class="couple-column">
+            <div class="couple-label">Cô Dâu</div>
+            <div class="couple-name">Võ Thị Hoàng Vi</div>
+            <img class="couple-img" src="images/hinh_codau01.jpg" alt="Ảnh Cô Dâu" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Thư Mời -->
+    <section class="section-wrapper carousel-section" data-animate="fade-in-up">
+      <h2 class="section-title">Thư Mời</h2>
+      <div class="carousel-3images">
+        <div class="carousel-item">
+          <img src="images/anh_gallery01.JPG" alt="Ảnh 1">
+        </div>
+        <div class="carousel-item center">
+          <img src="images/anh_gallery04.JPG" alt="Ảnh 2">
+        </div>
+        <div class="carousel-item">
+          <img src="images/anh_gallery03.JPG" alt="Ảnh 3">
+        </div>
+      </div>
+    </section>
+
+    <!-- Nội dung Thư Mời -->
+    <section class="section-wrapper invitation" data-animate="fade-in-up">
+      <div class="invitation-container">
+        <p class="invite-message">
+          Trân trọng kính mời quý khách dành thời gian đến dự và chung vui cùng gia đình chúng tôi trong ngày trọng đại.
+        </p>
+    
+        <div class="invitation-details">
+          <div class="detail-item">
+            <span class="detail-title">Thời gian:</span>
+            <span class="highlight-text">Chủ nhật, 18 tháng 05 năm 2025</span>
+            <div class="lunar-date">(Nhằm ngày 21 tháng 04 năm Ất Tỵ)</div>
+          </div>
+    
+          <ul class="schedule">
+            <li><span class="time">10h30</span> – Đón khách</li>
+            <li><span class="time">11h00</span> – Cử hành hôn lễ</li>
+          </ul>
+    
+          <div class="detail-item">
+            <span class="detail-title">Địa điểm:</span>
+            <span class="highlight-text">Nhà hàng Gold Palace</span>
+          </div>
+    
+          <div class="detail-item">
+            <span class="detail-title">Địa chỉ:</span>
+            <span class="highlight-text">329 Nơ Trang Long, Q. Bình Thạnh, TP.HCM</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lịch & Địa điểm (kết hợp chung) -->
+    <section class="section-wrapper map-calendar-section" data-animate="fade-in-up">
+    
+      <div class="map-calendar-container">
+        <!-- Lịch ngày cưới -->
+        <div class="wedding-calendar-container">
+          <div class="calendar-frame">
+            <div class="calendar-decor-bottom">Forever Love</div>
+            <div class="calendar-header">
+              <span class="month-name">Tháng 5</span>
+              <span class="year-number">2025</span>
+            </div>
+            <div class="calendar-body">
+              <div class="weekdays">
+                <span>CN</span><span>T2</span><span>T3</span>
+                <span>T4</span><span>T5</span><span>T6</span><span>T7</span>
+              </div>
+              <div class="week">
+                <span class="day blank"></span>
+                <span class="day blank"></span>
+                <span class="day blank"></span>
+                <span class="day blank"></span>
+                <span class="day">1</span>
+                <span class="day">2</span>
+                <span class="day">3</span>
+              </div>
+              <div class="week">
+                <span class="day">4</span>
+                <span class="day">5</span>
+                <span class="day">6</span>
+                <span class="day">7</span>
+                <span class="day">8</span>
+                <span class="day">9</span>
+                <span class="day">10</span>
+              </div>
+              <div class="week">
+                <span class="day">11</span>
+                <span class="day">12</span>
+                <span class="day">13</span>
+                <span class="day">14</span>
+                <span class="day">15</span>
+                <span class="day">16</span>
+                <span class="day">17</span>
+              </div>
+              <div class="week">
+                <span class="day wedding-date">18</span>
+                <span class="day">19</span>
+                <span class="day">20</span>
+                <span class="day">21</span>
+                <span class="day">22</span>
+                <span class="day">23</span>
+                <span class="day">24</span>
+              </div>
+              <div class="week">
+                <span class="day">25</span>
+                <span class="day">26</span>
+                <span class="day">27</span>
+                <span class="day">28</span>
+                <span class="day">29</span>
+                <span class="day">30</span>
+                <span class="day">31</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bản đồ Google Map -->
+        <div class="map-container">
+          <div class="map-iframe-container">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.308446938317!2d106.7010809!3d10.8191539!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529d8e1cbada9%3A0x5f5d6d5f78a54e60!2sGold%20Palace!5e1!3m2!1svi!2s!4v1744379999997!5m2!1svi!2s"
+              width="100%"
+              height="450"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALBUM CƯỚI + Lightbox -->
+    <section class="section-wrapper album-section" data-animate="fade-in-up">
+      <h2 class="section-title">Album Cưới</h2>
+
+      <!-- Concept Vũ Garden -->
+     
+      <div class="wedding-album-landscape">
+        <div class="album-item" data-full="images/album_vugarden_01.jpg" data-animate="zoom-in">
+          <img src="images/album_vugarden_01.jpg" alt="album_vugarden_01">
+        </div>
+        <div class="album-item" data-full="images/album_vugarden_18.jpeg" data-animate="zoom-in">
+          <img src="images/album_vugarden_18.jpeg" alt="album_vugarden_18">
+        </div>
+        <div class="album-item" data-full="images/album_vugarden_03.jpg" data-animate="zoom-in">
+          <img src="images/album_vugarden_03.jpg" alt="album_vugarden_03">
+        </div>
+        <div class="album-item" data-full="images/album_vugarden_02.jpg" data-animate="zoom-in">
+          <img src="images/album_vugarden_02.jpg" alt="album_vugarden_02">
+        </div>
+        <div class="album-item" data-full="images/album_vugarden_05.jpg" data-animate="zoom-in">
+          <img src="images/album_vugarden_05.jpg" alt="album_vugarden_05">
+        </div>
+        <div class="album-item" data-full="images/album_vugarden_06.jpg" data-animate="zoom-in">
+          <img src="images/album_vugarden_06.jpg" alt="album_vugarden_06">
+        </div>
+        <div class="album-item" data-full="images/album_vugarden_07.jpg" data-animate="zoom-in">
+          <img src="images/album_vugarden_07.jpg" alt="album_vugarden_07">
+        </div>
+        <div class="album-item" data-full="images/album_vugarden_08.jpg" data-animate="zoom-in">
+          <img src="images/album_vugarden_08.jpg" alt="album_vugarden_08">
+        </div>
+        <div class="album-item" data-full="images/album_vugarden_09.jpg" data-animate="zoom-in">
+          <img src="images/album_vugarden_09.jpg" alt="album_vugarden_09">
+        </div>
+        <div class="album-item" data-full="images/album_vugarden_10.jpg" data-animate="zoom-in">
+          <img src="images/album_vugarden_10.jpg" alt="album_vugarden_10">
+        </div>
+        <div class="album-item" data-full="images/album_vugarden_19.jpeg" data-animate="zoom-in">
+          <img src="images/album_vugarden_19.jpeg" alt="album_vugarden_19">
+        </div>
+       
+        <div class="album-item" data-full="images/album_vugarden_14.jpg" data-animate="zoom-in">
+          <img src="images/album_vugarden_14.jpg" alt="album_vugarden_14">
+        </div>
+        <div class="album-item" data-full="images/anh_gallery02.JPG" data-animate="zoom-in">
+          <img src="images/anh_gallery02.JPG" alt="album_vugarden_20">
+        </div>
+        <div class="album-item" data-full="images/album_vugarden_16.jpg" data-animate="zoom-in">
+          <img src="images/album_vugarden_16.jpg" alt="album_vugarden_16">
+        </div>
+        <div class="album-item" data-full="images/album_vugarden_17.jpeg" data-animate="zoom-in">
+          <img src="images/album_vugarden_17.jpeg" alt="album_vugarden_17">
+        </div>
+        <div class="album-item" data-full="images/album_vugarden_11.jpg" data-animate="zoom-in">
+          <img src="images/album_vugarden_11.jpg" alt="album_vugarden_11">
+        </div>
+        <div class="album-item" data-full="images/album_vugarden_20.jpeg" data-animate="zoom-in">
+          <img src="images/album_vugarden_20.jpeg" alt="album_vugarden_20">
+        </div>
+        <div class="album-item" data-full="images/album_vugarden_21.jpg" data-animate="zoom-in">
+          <img src="images/album_vugarden_21.jpg" alt="album_vugarden_21">
+        </div>
+      
+        
+      </div>
+
+      <!-- Concept Việt Phục -->
+      <h3>Concept Việt Phục</h3>
+      <div class="wedding-album-vertical">
+        
+        <div class="album-item" data-full="images/album_phuctrang_02.jpg" data-animate="zoom-in">
+          <img src="images/album_phuctrang_02.jpg" alt="album_phuctrang_02">
+        </div>
+        <div class="album-item" data-full="images/album_phuctrang_03.jpg" data-animate="zoom-in">
+          <img src="images/album_phuctrang_03.jpg" alt="album_phuctrang_03">
+        </div>
+        <div class="album-item" data-full="images/album_phuctrang_04.jpg" data-animate="zoom-in">
+          <img src="images/album_phuctrang_04.jpg" alt="album_phuctrang_04">
+        </div>
+        <div class="album-item" data-full="images/album_phuctrang_05.jpg" data-animate="zoom-in">
+          <img src="images/album_phuctrang_05.jpg" alt="album_phuctrang_05">
+        </div>
+        <div class="album-item" data-full="images/album_phuctrang_06.jpg" data-animate="zoom-in">
+          <img src="images/album_phuctrang_06.jpg" alt="album_phuctrang_06">
+        </div>
+        <div class="album-item" data-full="images/album_phuctrang_08.jpeg" data-animate="zoom-in">
+          <img src="images/album_phuctrang_08.jpeg" alt="album_phuctrang_08">
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox overlay -->
+    <div class="lightbox-overlay" id="lightbox">
+      <img src="" alt="lightbox-img" id="lightbox-img"/>
+    </div>
+
+    <!-- QR SECTION -->
+    <section class="section-wrapper qr-section" data-animate="fade-in-down" id="qr-section">
+      <h2 class="section-title">Mã QR</h2>
+      <p style="margin-bottom:25px; font-style:italic; color:#555;">
+        (Hãy quét mã để gửi lời chúc phúc đến đôi uyên ương)
+        <br>
+        (Chúng tôi rất mong nhận được sự hiện diện của bạn trong ngày vui này)
+        <br>
+      </p>
+
+      <div class="qr-container">
+        <div class="qr-heading">Mừng cưới đến Tá & Vi</div>
+        <div class="qr-bank-info">
+          Ngân hàng: TPBANK (Tiên Phong Bank) <br>
+          Tên: Trần Trung Tá <br>
+          STK: 0257 0769 301
+        </div>
+        <img class="qr-code" src="images/qrcode_trungta.jpg" alt="QR code thiệp" />
+        <div class="qr-note">Hãy quét mã để gửi lời chúc phúc đến đôi uyên ương</div>
+        
+        <a id="momo-btn" href="momo://wallet" target="_blank">
+          Mở ví Momo
+        </a>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="section-wrapper rsvp-section" data-animate="fade-in-up" id="rsvp-section">
+      <h2>Xác nhận tham gia</h2>
+      <form id="rsvp-form">
+        <label for="rsvp-name">Họ Tên:</label>
+        <input type="text" id="rsvp-name" name="rsvp-name" required />
+      
+        <label for="rsvp-phone">Số điện thoại:</label>
+        <input type="tel" id="rsvp-phone" name="rsvp-phone" required />
+      
+        <label for="rsvp-count">Số khách tham gia:</label>
+        <input type="number" id="rsvp-count" name="rsvp-count" min="1" required />
+      
+        <button type="submit">Xác nhận</button>
+      </form>
+    </section>
+
+    <!-- DIGITAL GUESTBOOK -->
+    <section class="section-wrapper guestbook-section" data-animate="fade-in-up" id="guestbook">
+      <h2>Bảng Lời Chúc</h2>
+      <form class="guestbook-form" id="guestbook-form">
+        <input type="text" id="guest-name" name="guest-name" placeholder="Tên của bạn" required />
+        <textarea id="guest-message" name="guest-message" rows="3" placeholder="Lời chúc hoặc lời nhắn..." required></textarea>
+        <button type="submit">Gửi Lời Chúc</button>
+      </form>
+
+      <div class="guestbook-messages" id="guestbook-messages">
+        <!-- Nơi hiển thị lời chúc đã gửi -->
+      </div>
+    </section>
+
+    <!-- Lời cảm ơn -->
+    <section class="section-wrapper best-wishes" data-animate="fade-in-up">
+      <p>
+        Chúng tôi chân thành cảm ơn sự hiện diện và chung vui của quý vị!<br>
+        Mọi sự chúc phúc đều là món quà quý giá nhất đối với đôi uyên ương.
+        <br><br>
+        Kính chúc toàn thể quý khách sức khỏe, hạnh phúc và an vui!
+      </p>
+    </section>
+  </main>
+
+  <!-- Back to top -->
+  <button id="back-to-top" title="Lên đầu trang">&#9650;</button>
+
+  <!-- Nút Menu nổi (Xác nhận - Gửi tiền) -->
+  <div class="floating-menu" id="floating-menu">
+    <button class="menu-toggle" id="menu-toggle">Menu</button>
+    <div class="menu-content show" id="menu-content">
+      <a href="#rsvp-section">Xác nhận tham gia</a>
+      <a href="#qr-section">Gửi tiền mừng</a>
+    </div>
+  </div>
+
+  <!-- Modal RSVP -->
+  <div id="rsvp-modal" class="modal-bg modal-hidden">
+    <div class="modal-content">
+      <span class="modal-close-icon" id="rsvp-modal-close">&times;</span>
+      <h3>Đã xác nhận!</h3>
+      <p>Cảm ơn bạn đã xác nhận tham gia.<br>Chúng tôi rất mong chờ được gặp bạn trong ngày trọng đại!</p>
+      <button class="modal-close-btn">Đóng</button>
+    </div>
+  </div>
+
+  <!-- Script chính -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script>
+    /* ========== Preloader ========== */
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      setTimeout(() => {
+        preloader.style.display = 'none';
+      }, 1500);
+    });
+
+    /* ========== Music Control ========== */
+    const musicToggle = document.getElementById('music-toggle');
+    const bgMusic = document.getElementById('bg-music');
+    let isPlaying = true;
+    musicToggle.addEventListener('click', () => {
+      if(isPlaying){
+        bgMusic.pause();
+        musicToggle.textContent = '🔇';
+      } else {
+        bgMusic.play();
+        musicToggle.textContent = '♪';
+      }
+      isPlaying = !isPlaying;
+    });
+
+    /* ========== Floating Hearts ========== */
+    const heartsContainer = document.getElementById('hearts-container');
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.bottom = '-40px'; // start from bottom
+      heartsContainer.appendChild(heart);
+      const duration = Math.random() * 3 + 4; // 4-7s
+      heart.style.animationDuration = duration + 's';
+      heart.addEventListener('animationend', () => {
+        heart.remove();
+      });
+    }
+    setInterval(createHeart, 1000);
+
+    /* ========== Hoa rơi ========== */
+    const flowerContainer = document.getElementById('flower-container');
+    const flowerImages = [
+      "https://cdn-icons-png.flaticon.com/512/1029/1029132.png",
+      "https://cdn-icons-png.flaticon.com/512/1405/1405351.png",
+      "https://cdn-icons-png.flaticon.com/512/766/766594.png"
+    ];
+    function createFlower() {
+      const flower = document.createElement('img');
+      flower.classList.add('flower');
+      flower.src = flowerImages[Math.floor(Math.random() * flowerImages.length)];
+      flower.style.left = Math.random() * 100 + 'vw';
+      flower.style.top = '-10vh';
+      const fallDuration = Math.random() * 10 + 5;
+      flower.style.animation = `fall ${fallDuration}s linear`;
+      flowerContainer.appendChild(flower);
+      flower.addEventListener('animationend', () => {
+        flower.remove();
+      });
+    }
+    setInterval(createFlower, 700);
+
+    /* ========== Sparkle ========== */
+    const sparkleContainer = document.getElementById('sparkle-container');
+    function createSparkle() {
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      sparkle.style.left = Math.random() * 100 + 'vw';
+      sparkle.style.top = Math.random() * 100 + 'vh';
+      sparkleContainer.appendChild(sparkle);
+      const duration = Math.random() * 3 + 2; // 2s - 5s
+      sparkle.style.animationDuration = duration + 's';
+      sparkle.addEventListener('animationend', () => {
+        sparkle.remove();
+      });
+    }
+    setInterval(createSparkle, 1000);
+
+    /* ========== Countdown Timer ========== */
+    const weddingDate = new Date("May 18, 2025 00:00:00").getTime();
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+      if (distance < 0) {
+        document.getElementById("countdown-timer").innerHTML = "Đã đến ngày cưới!";
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = days < 10 ? '0' + days : days;
+      document.getElementById("hours").innerText = hours < 10 ? '0' + hours : hours;
+      document.getElementById("minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
+      document.getElementById("seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+    }
+    setInterval(updateCountdown, 1000);
+
+    /* ========== LIGHTBOX ========== */
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const albumItems = document.querySelectorAll('.album-item');
+
+    albumItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const fullImg = item.getAttribute('data-full');
+        lightboxImg.src = fullImg;
+        lightbox.classList.add('show');
+      });
+    });
+    lightbox.addEventListener('click', (e) => {
+      if(e.target === lightbox || e.target === lightboxImg){
+        lightbox.classList.remove('show');
+      }
+    });
+
+    /* ========== Form RSVP (Google Apps Script) ========== */
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxq83YOVUDbArNikQGVNpI1vO0GGbQJiA6q7TV7SYqS5u-1mXbmdjOp1vSDEKEMN8zeAA/exec';
+    const rsvpForm = document.getElementById('rsvp-form');
+    const rsvpModal = document.getElementById('rsvp-modal');
+    const rsvpModalCloseIcon = document.getElementById('rsvp-modal-close');
+    const rsvpModalCloseBtn = rsvpModal.querySelector('.modal-close-btn');
+
+    function closeRsvpModal() {
+      rsvpModal.classList.add('modal-hidden');
+    }
+
+    rsvpForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const formData = new FormData(rsvpForm);
+
+      fetch(scriptURL, { method: 'POST', body: formData })
+        .then(response => response.json())
+        .then(data => {
+          if (data.result === "success") {
+            rsvpForm.reset();
+            rsvpModal.classList.remove('modal-hidden'); 
+          } else {
+            alert('Gửi RSVP thất bại, vui lòng thử lại sau!');
+          }
+        })
+        .catch(error => {
+          console.error('Error!', error);
+          // Demo: hiển thị modal ngay cả khi chưa có script
+          rsvpForm.reset();
+          rsvpModal.classList.remove('modal-hidden'); 
+        });
+    });
+
+    rsvpModalCloseIcon.addEventListener('click', closeRsvpModal);
+    rsvpModalCloseBtn.addEventListener('click', closeRsvpModal);
+    rsvpModal.addEventListener('click', (e) => {
+      if (e.target === rsvpModal) {
+        closeRsvpModal();
+      }
+    });
+
+    /* ========== FAQ Accordion (nếu dùng) ========== */
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(faq => {
+      faq.addEventListener('click', () => {
+        faq.classList.toggle('active');
+      });
+    });
+
+    /* ========== Digital Guestbook (demo) ========== */
+    // Tương tự RSVP, bạn cần 1 Apps Script (hoặc server) để lưu & load lời chúc.
+    const guestbookForm = document.getElementById('guestbook-form');
+    const guestbookMessages = document.getElementById('guestbook-messages');
+
+    guestbookForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const guestName = document.getElementById('guest-name').value;
+      const guestMessage = document.getElementById('guest-message').value;
+
+      // Demo: hiển thị lời chúc ngay (thay vì gửi Apps Script)
+      const msgDiv = document.createElement('div');
+      msgDiv.classList.add('guestbook-message');
+      msgDiv.innerHTML = `
+        <div class="msg-name">${guestName}</div>
+        <div class="msg-text">${guestMessage}</div>
+      `;
+      guestbookMessages.prepend(msgDiv);
+
+      // Xoá input
+      guestbookForm.reset();
+
+      // TODO: Gửi thông tin sang Google Script, v.v. (nếu muốn lưu)
+    });
+
+    /* ========== Scroll Animation ========== */
+    const sections = document.querySelectorAll('[data-animate]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    /* ========== Back to Top Button ========== */
+    const backToTopBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (document.documentElement.scrollTop > 300) {
+        backToTopBtn.style.display = "block";
+      } else {
+        backToTopBtn.style.display = "none";
+      }
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ========== Floating Menu Toggle ========== */
+    const menuToggleBtn = document.getElementById('menu-toggle');
+    const menuContent = document.getElementById('menu-content');
+
+    menuToggleBtn.addEventListener('click', () => {
+      menuContent.classList.toggle('show');
+    });
+  </script>
+</body>
+</html>

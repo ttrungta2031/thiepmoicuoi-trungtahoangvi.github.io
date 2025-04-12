@@ -1,0 +1,584 @@
+/* Reset cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Noto Serif VN', serif;
+    background-color: #fdf4f5;
+    color: #333;
+    overflow-x: hidden;
+  }
+  
+  /* ========== Preloader ========== */
+  #preloader {
+    position: fixed;
+    z-index: 9999;
+    background: #fff;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #c9302c;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  #preloader p {
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  /* ========== Hero / Header ========== */
+  .hero-section {
+    width: 100%;
+    height: 100vh;
+    background: url("https://images.unsplash.com/photo-1486161326270-9b60c6f7f27f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80") center/cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-text {
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 20px 40px;
+    text-align: center;
+    border-radius: 10px;
+  }
+  .couple-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: #c9302c;
+  }
+  .hero-date {
+    font-size: 1.8rem;
+    margin: 10px 0;
+    color: #444;
+  }
+  .countdown p {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  #countdown-timer {
+    font-size: 1.2rem;
+  }
+  
+  /* ========== Main Content Container ========== */
+  main {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    text-align: center;
+  }
+  
+  /* ========== Wedding Calendar (nâng cấp) ========== */
+  .wedding-calendar {
+    margin: 40px 0;
+  }
+  .wedding-calendar h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #c9302c;
+  }
+  .calendar-container {
+    display: inline-block;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    /* Có thể thêm background-image nếu muốn trang trí */
+    /* background-image: url("images/calendar-bg.png"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  .calendar-header {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #c9302c;
+  }
+  .calendar-body {
+    text-align: center;
+  }
+  .weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1rem;
+  }
+  .week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 8px;
+  }
+  .day {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    color: #555;
+  }
+  .blank {
+    background-color: transparent;
+  }
+  .day:hover {
+    background-color: #fce9e9;
+    cursor: default;
+  }
+  .wedding-date {
+    position: relative;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #c9302c;
+  }
+  .wedding-date::before {
+    content: "♥";
+    position: absolute;
+    font-size: 1.3rem;
+    color: #c9302c;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* ========== Invitation Section ========== */
+  .invitation h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: #c9302c;
+    margin-bottom: 20px;
+  }
+  .invite-message {
+    font-style: italic;
+    margin-bottom: 15px;
+  }
+  .invitation-content {
+    text-align: left;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  .invitation-content p {
+    margin: 5px 0;
+  }
+  .timeline {
+    margin-top: 20px;
+  }
+  .timeline h3 {
+    font-size: 1.3rem;
+    color: #c9302c;
+    margin-bottom: 10px;
+  }
+  .timeline ul {
+    list-style: none;
+  }
+  .timeline li {
+    margin: 5px 0;
+  }
+  
+  /* ========== Ảnh cặp đôi ========== */
+  .couple-photo {
+    margin: 30px 0;
+  }
+  .couple-photo img {
+    max-width: 90%;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+  
+  /* ========== Map Section ========== */
+  .map-section {
+    margin: 40px 0;
+  }
+  .map-section h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #c9302c;
+  }
+  .map-iframe-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  /* ========== Gallery / Slideshow ========== */
+  .gallery-section {
+    margin: 40px 0;
+  }
+  .gallery-section h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #c9302c;
+  }
+  .slideshow-container {
+    position: relative;
+    margin: auto;
+    max-width: 600px;
+  }
+  .slide {
+    display: none;
+  }
+  .slide img {
+    width: 100%;
+    border-radius: 5px;
+  }
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 16px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s ease;
+    border-radius: 3px;
+    user-select: none;
+    background: rgba(0,0,0,0.3);
+  }
+  .prev:hover, .next:hover {
+    background: rgba(0,0,0,0.6);
+  }
+  .prev {
+    left: 0;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  .next {
+    right: 0;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  .dots-container {
+    text-align: center;
+    margin-top: 10px;
+  }
+  .dot {
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    margin: 0 4px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .active-dot, .dot:hover {
+    background-color: #717171;
+  }
+  
+  /* ========== Quotes Section ========== */
+  .quotes-section {
+    margin: 40px 0;
+  }
+  .quotes-section h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #c9302c;
+  }
+  .quotes p {
+    font-style: italic;
+    margin: 10px 0;
+    color: #555;
+  }
+  
+  /* ========== QR Section ========== */
+  .qr-section {
+    margin: 40px 0;
+  }
+  .qr-section h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: #c9302c;
+    margin-bottom: 15px;
+  }
+  .qr-wrapper {
+    margin-bottom: 20px;
+  }
+  .qr-wrapper img {
+    max-width: 200px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+  }
+  #copy-btn {
+    background-color: #c9302c;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+  }
+  #copy-btn:hover {
+    background-color: #ac2925;
+  }
+  
+  /* ========== Guestbook ========== */
+  .guestbook {
+    margin: 40px 0;
+  }
+  .guestbook h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #c9302c;
+  }
+  #guestbook-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  #guest-name, #guest-message {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  #guestbook-form button {
+    background-color: #c9302c;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    border-radius: 5px;
+  }
+  #guestbook-messages {
+    margin-top: 20px;
+    text-align: left;
+    width: 80%;
+    margin: 20px auto 0 auto;
+  }
+  .message {
+    background-color: #ffe5e5;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  .message p {
+    margin: 5px 0;
+    line-height: 1.4;
+  }
+  
+  /* ========== Thanks ========== */
+  .thanks {
+    margin: 50px 0;
+    font-style: italic;
+    color: #555;
+  }
+  
+  /* ========== FAB (Floating Action Buttons) ========== */
+  .fab-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
+  .fab-main {
+    background-color: #c9302c;
+    color: #fff;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+  }
+  .fab-main:hover {
+    transform: rotate(90deg);
+  }
+  .fab-menu {
+    display: none; /* Ẩn mặc định */
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 10px;
+  }
+  .fab-option {
+    background-color: #e67e22;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    margin-top: 6px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    font-size: 0.9rem;
+  }
+  .fab-option:hover {
+    background-color: #d35400;
+  }
+  
+  /* ========== Back to top button ========== */
+  #back-to-top {
+    display: none;
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    z-index: 999;
+    font-size: 18px;
+    background-color: #c9302c;
+    color: #fff;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  #back-to-top:hover {
+    background-color: #ac2925;
+  }
+  
+  /* ========== Hiệu ứng rơi hoa ========== */
+  #flower-container {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 8000;
+    overflow: hidden;
+  }
+  .flower {
+    animation-fill-mode: forwards;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* ========== Scroll Animations (fade-in, fade-in-up, fade-in-down) ========== */
+  [data-animate] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease;
+  }
+  [data-animate].active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Biến thể fade-in-up / fade-in-down */
+  [data-animate="fade-in-up"].active {
+    transform: translateY(0);
+  }
+  [data-animate="fade-in-down"].active {
+    transform: translateY(0);
+  }
+  [data-animate="fade-in"].active {
+    transform: translateY(0);
+  }
+  
+  /* ========== Keyframes ========== */
+  @keyframes fall {
+    0% {
+      transform: translateY(-10vh);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(110vh);
+      opacity: 0;
+    }
+  }
+  
+  /* ========== Responsive Design (Media Queries) ========== */
+  /* Dưới 768px (mobile) */
+  @media (max-width: 768px) {
+    .hero-text {
+      padding: 15px 20px;
+    }
+    .couple-name {
+      font-size: 2.2rem;
+    }
+    .hero-date {
+      font-size: 1.4rem;
+    }
+    .calendar-header {
+      font-size: 1.3rem;
+    }
+    .weekdays, .week .day {
+      font-size: 1rem;
+    }
+    .day {
+      height: 40px;
+    }
+    .wedding-date {
+      font-size: 1.1rem;
+    }
+    .wedding-date::before {
+      font-size: 1.1rem;
+    }
+    .gallery-section h2,
+    .map-section h2,
+    .quotes-section h2,
+    .qr-section h2,
+    .guestbook h2 {
+      font-size: 1.6rem;
+    }
+    .invitation h2 {
+      font-size: 2rem;
+    }
+    #guest-name, #guest-message {
+      width: 95%;
+    }
+    /* FAB */
+    .fab-main {
+      width: 45px;
+      height: 45px;
+      font-size: 1.5rem;
+    }
+  }
+  
+  /* Dưới 480px (mobile nhỏ hơn nữa) */
+  @media (max-width: 480px) {
+    .hero-date {
+      font-size: 1.2rem;
+    }
+    .calendar-header {
+      font-size: 1.1rem;
+    }
+    .couple-photo img {
+      max-width: 100%;
+    }
+    .map-iframe-container {
+      width: 100%;
+    }
+    .prev, .next {
+      padding: 10px;
+      font-size: 1rem;
+    }
+    .dots-container {
+      margin-bottom: 10px;
+    }
+  }
+    /* Dưới 360px (mobile cực nhỏ) */  
