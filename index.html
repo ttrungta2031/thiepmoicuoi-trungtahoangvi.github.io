@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thiệp Mời Cưới - Trung Tá & Hoàng Vi</title>
+  <title>Thiệp Mời Cưới Của Trung Tá & Hoàng Vi</title>
 
   <!-- Favicon (Logo ở thanh địa chỉ) -->
   <link rel="icon" href="images/logo_damcuoitrantahoangvi.PNG" type="image/png" />
@@ -76,22 +76,22 @@
       color: var(--text-color);
     }
 
-   /* ========== Logo nổi góc trái (đã tăng kích thước) ========== */
-.logo-floating {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 9000;
-}
-.logo-floating img {
-  width: 150px; /* Tăng kích thước lên 80px */
-  height: auto;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-.logo-floating img:hover {
-  transform: scale(1.05);
-}
+    /* ========== Logo nổi góc trái (đã tăng kích thước) ========== */
+    .logo-floating {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 9000;
+    }
+    .logo-floating img {
+      width: 150px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .logo-floating img:hover {
+      transform: scale(1.05);
+    }
 
     /* ========== Music Toggle Button ========== */
     .music-control {
@@ -188,8 +188,6 @@
         opacity: 0;
       }
     }
-
-   
 
     /* ========== Floating Hearts ========== */
     #hearts-container {
@@ -371,7 +369,6 @@
       color: #f7f7f7;
     }
 
-    /* Hiển thị hero-invite-box trên màn hình nhỏ (thay vì ẩn) */
     @media (max-width: 768px) {
       .hero-invite-box {
         display: block;
@@ -452,7 +449,6 @@
       color: #000000;
       text-transform: uppercase;
     }
-    
     .parents-info p {
       font-size: 0.65rem;
       margin: 3px 0;
@@ -472,92 +468,80 @@
 
     /* ========== COUPLE SECTION (điều chỉnh responsive) ========== */
     .couple-section {
-  display: flex;
-  flex-wrap: nowrap; /* Luôn 1 hàng */
-  gap: 20px;
-  justify-content: center;
-  margin-top: 30px;
-  transform-origin: top center;
-}
+      display: flex;
+      flex-wrap: nowrap; /* Luôn 1 hàng */
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+      transform-origin: top center;
+    }
+    .couple-column {
+      flex: 0 0 300px;
+      max-width: 300px;
+      background-color: #fff2e8;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .couple-column:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+    .couple-label {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #000000;
+      text-transform: uppercase;
+    }
+    .couple-name {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: var(--heading-color);
+      margin-bottom: 15px;
+    }
+    .couple-img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .couple-img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
 
-/* Mỗi cột vẫn 300px, nhưng ta sẽ scale cột khi màn hình nhỏ */
-.couple-column {
-  flex: 0 0 300px;
-  max-width: 300px;
-  background-color: #fff2e8;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  padding: 20px;
-  text-align: center;
-  overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.couple-column:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-}
-.couple-label {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #000000;
-  text-transform: uppercase;
-}
-.couple-name {
-  font-family: 'Dancing Script', cursive;
-  font-size: 2rem;
-  color: var(--heading-color);
-  margin-bottom: 15px;
-}
-.couple-img {
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.couple-img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
+    @media (max-width: 600px) {
+      .couple-section {
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        transform: none;
+      }
+      .couple-column {
+        flex: 0 0 auto;
+        width: 45%;
+        max-width: 180px;
+        margin: 0 5px;
+      }
+      .couple-label {
+        font-size: 0.9rem;
+      }
+      .couple-name {
+        font-size: 1.0rem;
+        line-height: 1.2;
+      }
+      .couple-img {
+        width: 100%;
+        height: auto;
+        max-width: none;
+      }
+    }
 
-/* Khi màn hình nhỏ, scale toàn bộ .couple-section */
-@media (max-width: 600px) {
-  /* Bỏ việc thu nhỏ toàn bộ .couple-section */
-  .couple-section {
-    flex-wrap: nowrap;           /* Không cho cột xuống hàng */
-    justify-content: space-around; /* Dàn đều hai cột */
-    transform: none;            /* Nếu trước đó có scale(0.8), hãy bỏ */
-  }
-
-  /* Giới hạn chiều rộng cho mỗi cột */
-  .couple-column {
-    flex: 0 0 auto;         /* Cố định cột, không co giãn */
-    width: 45%;             /* Mỗi bên ~ 45% màn hình */
-    max-width: 180px;       /* Hoặc 160px, 200px tùy ý */
-    margin: 0 5px;          /* Khoảng cách nhẹ giữa 2 cột */
-  }
-
-  /* Chữ "Chú Rể" / "Cô Dâu" nhỏ hơn */
-  .couple-label {
-    font-size: 0.9rem;
-  }
-
-  /* Tên "Trần Trung Tá", "Võ Thị Hoàng Vi" nhỏ lại */
-  .couple-name {
-    font-size: 1.2rem; /* Thử 1.1 - 1.3rem, tùy ý bạn */
-    line-height: 1.2;
-  }
-
-  /* Ảnh thu nhỏ, tránh bị cắt */
-  .couple-img {
-    width: 100%;  /* Chiếm hết chiều ngang của cột */
-    height: auto;
-    max-width: none; /* Không giới hạn thêm */
-  }
-}
-
-    /* ========== Carousel 3 Ảnh ========== */
-    .carousel-section {
+       /* ========== Carousel 3 Ảnh ========== */
+       .carousel-section {
       padding: 20px 0;
     }
     .carousel-3images {
@@ -585,73 +569,63 @@
 
     /* ========== INVITATION (Thư Mời) ========== */
     .invitation {
-  font-family: 'Times New Roman', serif;
-  background-color: #fff2e8;
-  border-radius: 8px;
-  padding: 25px 20px;
-  text-align: center;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-  max-width: 600px;
-  margin: auto;
-}
-
-.invitation-container {
-  padding: 10px;
-}
-
-.invite-message {
-  font-style: italic;
-  font-size: 1.2rem;
-  color: var(--text-color);
-  margin-bottom: 20px;
-  line-height: 1.6;
-}
-
-.invitation-details {
-  margin-top: 10px;
-}
-
-.detail-item {
-  margin-bottom: 15px;
-}
-
-.detail-title {
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: var(--heading-color);
-  display: block;
-  margin-bottom: 5px;
-}
-
-.highlight-text {
-  font-size: 1.15rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.lunar-date {
-  font-size: 0.9rem;
-  color: #777;
-  font-style: italic;
-  margin-top: 5px;
-}
-
-.schedule {
-  list-style-type: none;
-  padding: 0;
-  margin: 15px 0;
-}
-
-.schedule li {
-  margin: 8px 0;
-  font-size: 1rem;
-  color: var(--text-color);
-}
-
-.schedule .time {
-  font-weight: bold;
-  color: var(--primary-color);
-}
+      font-family: 'Times New Roman', serif;
+      background-color: #fff2e8;
+      border-radius: 8px;
+      padding: 25px 20px;
+      text-align: center;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: auto;
+    }
+    .invitation-container {
+      padding: 10px;
+    }
+    .invite-message {
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--text-color);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .invitation-details {
+      margin-top: 10px;
+    }
+    .detail-item {
+      margin-bottom: 15px;
+    }
+    .detail-title {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: var(--heading-color);
+      display: block;
+      margin-bottom: 5px;
+    }
+    .highlight-text {
+      font-size: 1.15rem;
+      font-weight: bold;
+      color: #333;
+    }
+    .lunar-date {
+      font-size: 0.9rem;
+      color: #777;
+      font-style: italic;
+      margin-top: 5px;
+    }
+    .schedule {
+      list-style-type: none;
+      padding: 0;
+      margin: 15px 0;
+    }
+    .schedule li {
+      margin: 8px 0;
+      font-size: 1rem;
+      color: var(--text-color);
+    }
+    .schedule .time {
+      font-weight: bold;
+      color: var(--primary-color);
+    }
 
     /* ========== MAP & CALENDAR (kết hợp chung) ========== */
     .map-calendar-section {
@@ -666,15 +640,14 @@
       max-width: 1100px;
       margin: 0 auto;
     }
-
     .wedding-calendar-container,
     .map-container {
       flex: 1;
-      min-width: 300px; /* đảm bảo không quá nhỏ */
-      max-width: 550px; /* bạn có thể tùy chỉnh */
+      min-width: 300px;
+      max-width: 550px;
     }
 
-    /* ========== WEDDING CALENDAR (thiết kế lại) ========== */
+    /* ========== WEDDING CALENDAR ========== */
     .wedding-calendar-container {
       display: flex;
       justify-content: center;
@@ -779,76 +752,72 @@
       overflow: hidden;
     }
 
-    /* ========== Album Cưới + Lightbox ========== */
-    .album-section {
-      margin-top: 40px;
-    }
-    .album-section h3 {
-      font-size: 1.3rem;
-      color: var(--heading-color);
-      margin: 30px 0 20px;
-      text-transform: uppercase;
-      position: relative;
-      display: inline-block;
-    }
-    .album-section h3::after {
-      content: "";
-      position: absolute;
-      display: block;
-      height: 3px;
-      background: var(--main-color);
-      width: 40%;
-      left: 30%;
-      bottom: -5px;
-      border-radius: 2px;
-    }
-    .wedding-album-landscape {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-      justify-items: center;
-    }
-    .wedding-album-landscape .album-item {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-    }
-    .wedding-album-landscape .album-item:hover {
-      transform: scale(1.01);
-    }
-    .wedding-album-landscape .album-item img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .wedding-album-vertical {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 20px;
-      justify-items: center;
-    }
-    .wedding-album-vertical .album-item {
-      width: 100%;
-      max-width: 350px;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-    }
-    .wedding-album-vertical .album-item:hover {
-      transform: scale(1.02);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-    .wedding-album-vertical .album-item img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+    /* ========== ALBUM CƯỚI + Lightbox ========== */
+   /* ALBUM CƯỚI + Lightbox */
+.album-section {
+  margin-top: 40px;
+}
+
+.album-section h3 {
+  font-size: 1.3rem;
+  color: var(--heading-color);
+  margin: 30px 0 20px;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+}
+.album-section h3::after {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 3px;
+  background: var(--main-color);
+  width: 40%;
+  left: 30%;
+  bottom: -5px;
+  border-radius: 2px;
+}
+
+/* 2 layout cho album */
+.wedding-album-landscape,
+.wedding-album-vertical {
+  /* Quan trọng: Hiển thị 2 cột trên desktop, 1 cột trên mobile */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Mặc định 2 cột */
+  gap: 20px;
+  justify-items: center;
+  max-width: 1200px; /* bạn có thể tùy chỉnh */
+  margin: 0 auto;
+}
+
+/* Khi màn hình nhỏ hơn 768px, chỉ hiển thị 1 cột */
+@media (max-width: 768px) {
+  .wedding-album-landscape,
+  .wedding-album-vertical {
+    grid-template-columns: 1fr; /* 1 cột */
+  }
+}
+
+/* Khối ảnh */
+.album-item {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+.album-item:hover {
+  transform: scale(1.01);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.album-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Thuộc tính lazy loading */
+  /* Chú ý: Thuộc tính này phải khai báo trực tiếp trong HTML thay vì CSS */
+}
     /* Lightbox Overlay */
     .lightbox-overlay {
       position: fixed;
@@ -927,7 +896,7 @@
     .qr-code {
       max-width: 300px;
       width: 250px;
-      height: 300px;
+      height: auto;
       border: 2px solid #ccc;
       border-radius: 8px;
       object-fit: cover;
@@ -1002,66 +971,6 @@
     }
     .rsvp-section button:hover {
       background-color: var(--hover-color);
-    }
-
-    /* ========== FAQ SECTION (nếu có) ========== */
-    .faq-section {
-      background-color: #fefaf0;
-      margin-top: 40px;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      text-align: left;
-    }
-    .faq-section h2 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 2rem;
-      color: var(--heading-color);
-      margin-bottom: 15px;
-      text-align: center;
-    }
-    .faq-list {
-      list-style: none;
-      padding: 0;
-    }
-    .faq-item {
-      margin-bottom: 15px;
-    }
-    .faq-item h3 {
-      font-weight: bold;
-      cursor: pointer;
-      margin-bottom: 5px;
-      display: inline-flex;
-      align-items: center;
-    }
-    .faq-item p {
-      margin-left: 10px;
-      font-size: 0.95rem;
-      display: none;
-      line-height: 1.4;
-      padding-left: 20px;
-    }
-    .faq-item.active p {
-      display: block;
-      animation: fadeInFaq 0.5s ease;
-    }
-    @keyframes fadeInFaq {
-      from {opacity: 0;}
-      to   {opacity: 1;}
-    }
-    .faq-links {
-      margin-top: 15px;
-    }
-    .faq-links li {
-      margin: 5px 0;
-    }
-    .faq-links a {
-      color: var(--main-color);
-      text-decoration: underline;
-      cursor: pointer;
-    }
-    .faq-links a:hover {
-      color: var(--hover-color);
     }
 
     /* ========== DIGITAL GUESTBOOK ========== */
@@ -1316,7 +1225,7 @@
 
   <!-- Nút bật/tắt nhạc -->
   <div class="music-control">
-    <button id="music-toggle" class="music-btn">♪</button>
+    <button id="music-toggle" class="music-btn">🔇</button>
   </div>
 
   <!-- Container trái tim bồng bềnh -->
@@ -1328,8 +1237,8 @@
   <!-- Hiệu ứng lấp lánh -->
   <div id="sparkle-container"></div>
 
-  <!-- Nhạc nền -->
-  <audio id="bg-music" src="nhacthiepmoi.mp3" autoplay loop></audio>
+  <!-- Nhạc nền (bỏ autoplay, chỉ loop) -->
+  <audio id="bg-music" src="nhacthiepmoi.mp3" loop></audio>
 
   <!-- ========== Hero Section ========== -->
   <header class="hero-section" id="top">
@@ -1464,7 +1373,6 @@
 
     <!-- Lịch & Địa điểm (kết hợp chung) -->
     <section class="section-wrapper map-calendar-section" data-animate="fade-in-up">
-    
       <div class="map-calendar-container">
         <!-- Lịch ngày cưới -->
         <div class="wedding-calendar-container">
@@ -1550,88 +1458,83 @@
       <h2 class="section-title">Album Cưới</h2>
 
       <!-- Concept Vũ Garden -->
-     
       <div class="wedding-album-landscape">
         <div class="album-item" data-full="images/album_vugarden_01.JPG" data-animate="zoom-in">
-          <img src="images/album_vugarden_01.JPG" alt="album_vugarden_01">
+          <img src="images/album_vugarden_01.JPG" alt="album_vugarden_01" loading="lazy">
         </div>
         <div class="album-item" data-full="images/album_vugarden_18.JPEG" data-animate="zoom-in">
-          <img src="images/album_vugarden_18.JPEG" alt="album_vugarden_18">
+          <img src="images/album_vugarden_18.JPEG" alt="album_vugarden_18" loading="lazy">
         </div>
         <div class="album-item" data-full="images/album_vugarden_03.JPG" data-animate="zoom-in">
-          <img src="images/album_vugarden_03.JPG" alt="album_vugarden_03">
+          <img src="images/album_vugarden_03.JPG" alt="album_vugarden_03" loading="lazy">
         </div>
         <div class="album-item" data-full="images/album_vugarden_02.JPG" data-animate="zoom-in">
-          <img src="images/album_vugarden_02.JPG" alt="album_vugarden_02">
+          <img src="images/album_vugarden_02.JPG" alt="album_vugarden_02" loading="lazy">
         </div>
         <div class="album-item" data-full="images/album_vugarden_05.JPG" data-animate="zoom-in">
-          <img src="images/album_vugarden_05.JPG" alt="album_vugarden_05">
+          <img src="images/album_vugarden_05.JPG" alt="album_vugarden_05" loading="lazy">
         </div>
         <div class="album-item" data-full="images/album_vugarden_06.JPG" data-animate="zoom-in">
-          <img src="images/album_vugarden_06.JPG" alt="album_vugarden_06">
+          <img src="images/album_vugarden_06.JPG" alt="album_vugarden_06" loading="lazy">
         </div>
         <div class="album-item" data-full="images/album_vugarden_07.JPG" data-animate="zoom-in">
-          <img src="images/album_vugarden_07.JPG" alt="album_vugarden_07">
+          <img src="images/album_vugarden_07.JPG" alt="album_vugarden_07" loading="lazy">
         </div>
         <div class="album-item" data-full="images/album_vugarden_08.JPG" data-animate="zoom-in">
-          <img src="images/album_vugarden_08.JPG" alt="album_vugarden_08">
+          <img src="images/album_vugarden_08.JPG" alt="album_vugarden_08" loading="lazy">
         </div>
         <div class="album-item" data-full="images/album_vugarden_09.JPG" data-animate="zoom-in">
-          <img src="images/album_vugarden_09.JPG" alt="album_vugarden_09">
+          <img src="images/album_vugarden_09.JPG" alt="album_vugarden_09" loading="lazy">
         </div>
         <div class="album-item" data-full="images/album_vugarden_10.JPG" data-animate="zoom-in">
-          <img src="images/album_vugarden_10.JPG" alt="album_vugarden_10">
+          <img src="images/album_vugarden_10.JPG" alt="album_vugarden_10" loading="lazy">
         </div>
         <div class="album-item" data-full="images/album_vugarden_19.JPEG" data-animate="zoom-in">
-          <img src="images/album_vugarden_19.JPEG" alt="album_vugarden_19">
+          <img src="images/album_vugarden_19.JPEG" alt="album_vugarden_19" loading="lazy">
         </div>
-       
         <div class="album-item" data-full="images/album_vugarden_14.JPG" data-animate="zoom-in">
-          <img src="images/album_vugarden_14.JPG" alt="album_vugarden_14">
+          <img src="images/album_vugarden_14.JPG" alt="album_vugarden_14" loading="lazy">
         </div>
         <div class="album-item" data-full="images/anh_gallery02.JPG" data-animate="zoom-in">
-          <img src="images/anh_gallery02.JPG" alt="album_vugarden_20">
+          <img src="images/anh_gallery02.JPG" alt="album_vugarden_20" loading="lazy">
         </div>
         <div class="album-item" data-full="images/album_vugarden_16.JPG" data-animate="zoom-in">
-          <img src="images/album_vugarden_16.JPG" alt="album_vugarden_16">
+          <img src="images/album_vugarden_16.JPG" alt="album_vugarden_16" loading="lazy">
         </div>
         <div class="album-item" data-full="images/album_vugarden_17.JPEG" data-animate="zoom-in">
-          <img src="images/album_vugarden_17.JPEG" alt="album_vugarden_17">
+          <img src="images/album_vugarden_17.JPEG" alt="album_vugarden_17" loading="lazy">
         </div>
         <div class="album-item" data-full="images/album_vugarden_11.JPG" data-animate="zoom-in">
-          <img src="images/album_vugarden_11.JPG" alt="album_vugarden_11">
+          <img src="images/album_vugarden_11.JPG" alt="album_vugarden_11" loading="lazy">
         </div>
         <div class="album-item" data-full="images/album_vugarden_20.JPEG" data-animate="zoom-in">
-          <img src="images/album_vugarden_20.JPEG" alt="album_vugarden_20">
+          <img src="images/album_vugarden_20.JPEG" alt="album_vugarden_20" loading="lazy">
         </div>
         <div class="album-item" data-full="images/album_vugarden_21.JPG" data-animate="zoom-in">
-          <img src="images/album_vugarden_21.JPG" alt="album_vugarden_21">
+          <img src="images/album_vugarden_21.JPG" alt="album_vugarden_21" loading="lazy">
         </div>
-      
-        
       </div>
 
       <!-- Concept Việt Phục -->
       <h3>Concept Việt Phục</h3>
       <div class="wedding-album-vertical">
-        
         <div class="album-item" data-full="images/album_phuctrang_02.JPG" data-animate="zoom-in">
-          <img src="images/album_phuctrang_02.JPG" alt="album_phuctrang_02">
+          <img src="images/album_phuctrang_02.JPG" alt="album_phuctrang_02" loading="lazy">
         </div>
         <div class="album-item" data-full="images/album_phuctrang_03.JPG" data-animate="zoom-in">
-          <img src="images/album_phuctrang_03.JPG" alt="album_phuctrang_03">
+          <img src="images/album_phuctrang_03.JPG" alt="album_phuctrang_03" loading="lazy">
         </div>
         <div class="album-item" data-full="images/album_phuctrang_04.JPG" data-animate="zoom-in">
-          <img src="images/album_phuctrang_04.JPG" alt="album_phuctrang_04">
+          <img src="images/album_phuctrang_04.JPG" alt="album_phuctrang_04" loading="lazy">
         </div>
         <div class="album-item" data-full="images/album_phuctrang_05.JPG" data-animate="zoom-in">
-          <img src="images/album_phuctrang_05.JPG" alt="album_phuctrang_05">
+          <img src="images/album_phuctrang_05.JPG" alt="album_phuctrang_05" loading="lazy">
         </div>
         <div class="album-item" data-full="images/album_phuctrang_06.JPG" data-animate="zoom-in">
-          <img src="images/album_phuctrang_06.JPG" alt="album_phuctrang_06">
+          <img src="images/album_phuctrang_06.JPG" alt="album_phuctrang_06" loading="lazy">
         </div>
         <div class="album-item" data-full="images/album_phuctrang_08.JPEG" data-animate="zoom-in">
-          <img src="images/album_phuctrang_08.JPEG" alt="album_phuctrang_08">
+          <img src="images/album_phuctrang_08.JPEG" alt="album_phuctrang_08" loading="lazy">
         </div>
       </div>
     </section>
@@ -1734,24 +1637,39 @@
   <!-- Script chính -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   <script>
+    /* ========== Biến cục bộ ========== */
+    const musicToggle = document.getElementById('music-toggle');
+    const bgMusic = document.getElementById('bg-music');
+    let isPlaying = false; // Mặc định là tắt
+    musicToggle.textContent = '🔇'; // Icon tắt
+
     /* ========== Preloader ========== */
     window.addEventListener('load', () => {
       const preloader = document.getElementById('preloader');
       setTimeout(() => {
         preloader.style.display = 'none';
       }, 1500);
+
+      // Thử tự động phát nhạc khi trang đã load
+      bgMusic.play().then(() => {
+        // Nếu autoplay không bị chặn
+        isPlaying = true;
+        musicToggle.textContent = '♪';
+      }).catch(() => {
+        // Nếu autoplay bị chặn (thường trên mobile)
+        isPlaying = false;
+        bgMusic.pause();
+        musicToggle.textContent = '🔇';
+      });
     });
 
     /* ========== Music Control ========== */
-    const musicToggle = document.getElementById('music-toggle');
-    const bgMusic = document.getElementById('bg-music');
-    let isPlaying = true;
     musicToggle.addEventListener('click', () => {
-      if(isPlaying){
+      if (isPlaying) {
         bgMusic.pause();
         musicToggle.textContent = '🔇';
       } else {
-        bgMusic.play();
+        bgMusic.play().catch(err => {});
         musicToggle.textContent = '♪';
       }
       isPlaying = !isPlaying;
@@ -1795,7 +1713,7 @@
     }
     setInterval(createFlower, 700);
 
-    /* ========== Sparkle ========== */
+    /* ========== Sparkle (lấp lánh) ========== */
     const sparkleContainer = document.getElementById('sparkle-container');
     function createSparkle() {
       const sparkle = document.createElement('div');
@@ -1803,7 +1721,7 @@
       sparkle.style.left = Math.random() * 100 + 'vw';
       sparkle.style.top = Math.random() * 100 + 'vh';
       sparkleContainer.appendChild(sparkle);
-      const duration = Math.random() * 3 + 2; // 2s - 5s
+      const duration = Math.random() * 3 + 2; // 2-5s
       sparkle.style.animationDuration = duration + 's';
       sparkle.addEventListener('animationend', () => {
         sparkle.remove();
@@ -1870,16 +1788,16 @@
         .then(data => {
           if (data.result === "success") {
             rsvpForm.reset();
-            rsvpModal.classList.remove('modal-hidden'); 
+            rsvpModal.classList.remove('modal-hidden');
           } else {
             alert('Gửi RSVP thất bại, vui lòng thử lại sau!');
           }
         })
         .catch(error => {
           console.error('Error!', error);
-          // Demo: hiển thị modal ngay cả khi chưa có script
+          // Demo: hiển thị modal (nếu bạn chưa cấu hình Apps Script)
           rsvpForm.reset();
-          rsvpModal.classList.remove('modal-hidden'); 
+          rsvpModal.classList.remove('modal-hidden');
         });
     });
 
@@ -1891,16 +1809,7 @@
       }
     });
 
-    /* ========== FAQ Accordion (nếu dùng) ========== */
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(faq => {
-      faq.addEventListener('click', () => {
-        faq.classList.toggle('active');
-      });
-    });
-
     /* ========== Digital Guestbook (demo) ========== */
-    // Tương tự RSVP, bạn cần 1 Apps Script (hoặc server) để lưu & load lời chúc.
     const guestbookForm = document.getElementById('guestbook-form');
     const guestbookMessages = document.getElementById('guestbook-messages');
 
@@ -1909,7 +1818,7 @@
       const guestName = document.getElementById('guest-name').value;
       const guestMessage = document.getElementById('guest-message').value;
 
-      // Demo: hiển thị lời chúc ngay (thay vì gửi Apps Script)
+      // Demo: hiển thị lời chúc ngay
       const msgDiv = document.createElement('div');
       msgDiv.classList.add('guestbook-message');
       msgDiv.innerHTML = `
