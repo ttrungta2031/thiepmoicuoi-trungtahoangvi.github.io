@@ -6,7 +6,7 @@
   <title>Thiệp Cưới - Trung Tá & Hoàng Vi</title>
 
   <!-- Favicon (Logo ở thanh địa chỉ) -->
-  <link rel="icon" href="images/logo_damcuoitrantahoangvi.png" type="image/png" />
+  <link rel="icon" href="images/logo_damcuoitrantahoangvi.PNG" type="image/png" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -189,40 +189,7 @@
       }
     }
 
-    /* ========== Sparkle ========== */
-    #sparkle-container {
-      pointer-events: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 8500;
-      overflow: hidden;
-    }
-    .sparkle {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: radial-gradient(circle, #fff, #f2f2f2 60%, rgba(255,255,255,0) 70%);
-      border-radius: 50%;
-      animation: sparkle 2.5s infinite linear;
-      opacity: 0.8;
-    }
-    @keyframes sparkle {
-      0% {
-        transform: scale(0.8);
-        opacity: 0.8;
-      }
-      50% {
-        transform: scale(1.4);
-        opacity: 1;
-      }
-      100% {
-        transform: scale(0.6);
-        opacity: 0.8;
-      }
-    }
+   
 
     /* ========== Floating Hearts ========== */
     #hearts-container {
@@ -487,7 +454,7 @@
     }
     
     .parents-info p {
-      font-size: 0.75rem;
+      font-size: 0.65rem;
       margin: 3px 0;
       color: #f2f2f2;
       line-height: 1.4;
@@ -555,9 +522,37 @@
 
 /* Khi màn hình nhỏ, scale toàn bộ .couple-section */
 @media (max-width: 600px) {
+  /* Bỏ việc thu nhỏ toàn bộ .couple-section */
   .couple-section {
-    transform: scale(0.8);  /* Thu nhỏ 80% */
-    transform-origin: top center;
+    flex-wrap: nowrap;           /* Không cho cột xuống hàng */
+    justify-content: space-around; /* Dàn đều hai cột */
+    transform: none;            /* Nếu trước đó có scale(0.8), hãy bỏ */
+  }
+
+  /* Giới hạn chiều rộng cho mỗi cột */
+  .couple-column {
+    flex: 0 0 auto;         /* Cố định cột, không co giãn */
+    width: 45%;             /* Mỗi bên ~ 45% màn hình */
+    max-width: 180px;       /* Hoặc 160px, 200px tùy ý */
+    margin: 0 5px;          /* Khoảng cách nhẹ giữa 2 cột */
+  }
+
+  /* Chữ "Chú Rể" / "Cô Dâu" nhỏ hơn */
+  .couple-label {
+    font-size: 0.9rem;
+  }
+
+  /* Tên "Trần Trung Tá", "Võ Thị Hoàng Vi" nhỏ lại */
+  .couple-name {
+    font-size: 1.2rem; /* Thử 1.1 - 1.3rem, tùy ý bạn */
+    line-height: 1.2;
+  }
+
+  /* Ảnh thu nhỏ, tránh bị cắt */
+  .couple-img {
+    width: 100%;  /* Chiếm hết chiều ngang của cột */
+    height: auto;
+    max-width: none; /* Không giới hạn thêm */
   }
 }
 
@@ -904,7 +899,7 @@
       position: absolute;
       width: 30px;
       height: 30px;
-      background-image: url("https://cdn-icons-png.flaticon.com/512/2107/2107952.png");
+      background-image: url("https://cdn-icons-png.flaticon.com/512/2107/2107952.PNG");
       background-size: cover;
       opacity: 0.8;
     }
@@ -1316,7 +1311,7 @@
 
   <!-- Logo nổi góc trái -->
   <div class="logo-floating">
-    <img src="images/logo_damcuoitrantahoangvi.png" alt="Wedding Logo">
+    <img src="images/logo_damcuoitrantahoangvi.PNG" alt="Wedding Logo">
   </div>
 
   <!-- Nút bật/tắt nhạc -->
@@ -1408,12 +1403,12 @@
           <div class="couple-column">
             <div class="couple-label">Chú Rể</div>
             <div class="couple-name">Trần Trung Tá</div>
-            <img class="couple-img" src="images/hinh_chure01.jpg" alt="Ảnh Chú Rể" />
+            <img class="couple-img" src="images/hinh_chure01.JPG" alt="Ảnh Chú Rể" />
           </div>
           <div class="couple-column">
             <div class="couple-label">Cô Dâu</div>
             <div class="couple-name">Võ Thị Hoàng Vi</div>
-            <img class="couple-img" src="images/hinh_codau01.jpg" alt="Ảnh Cô Dâu" />
+            <img class="couple-img" src="images/hinh_codau01.JPG" alt="Ảnh Cô Dâu" />
           </div>
         </div>
       </div>
@@ -1557,60 +1552,60 @@
       <!-- Concept Vũ Garden -->
      
       <div class="wedding-album-landscape">
-        <div class="album-item" data-full="images/album_vugarden_01.jpg" data-animate="zoom-in">
-          <img src="images/album_vugarden_01.jpg" alt="album_vugarden_01">
+        <div class="album-item" data-full="images/album_vugarden_01.JPG" data-animate="zoom-in">
+          <img src="images/album_vugarden_01.JPG" alt="album_vugarden_01">
         </div>
-        <div class="album-item" data-full="images/album_vugarden_18.jpeg" data-animate="zoom-in">
-          <img src="images/album_vugarden_18.jpeg" alt="album_vugarden_18">
+        <div class="album-item" data-full="images/album_vugarden_18.JPEG" data-animate="zoom-in">
+          <img src="images/album_vugarden_18.JPEG" alt="album_vugarden_18">
         </div>
-        <div class="album-item" data-full="images/album_vugarden_03.jpg" data-animate="zoom-in">
-          <img src="images/album_vugarden_03.jpg" alt="album_vugarden_03">
+        <div class="album-item" data-full="images/album_vugarden_03.JPG" data-animate="zoom-in">
+          <img src="images/album_vugarden_03.JPG" alt="album_vugarden_03">
         </div>
-        <div class="album-item" data-full="images/album_vugarden_02.jpg" data-animate="zoom-in">
-          <img src="images/album_vugarden_02.jpg" alt="album_vugarden_02">
+        <div class="album-item" data-full="images/album_vugarden_02.JPG" data-animate="zoom-in">
+          <img src="images/album_vugarden_02.JPG" alt="album_vugarden_02">
         </div>
-        <div class="album-item" data-full="images/album_vugarden_05.jpg" data-animate="zoom-in">
-          <img src="images/album_vugarden_05.jpg" alt="album_vugarden_05">
+        <div class="album-item" data-full="images/album_vugarden_05.JPG" data-animate="zoom-in">
+          <img src="images/album_vugarden_05.JPG" alt="album_vugarden_05">
         </div>
-        <div class="album-item" data-full="images/album_vugarden_06.jpg" data-animate="zoom-in">
-          <img src="images/album_vugarden_06.jpg" alt="album_vugarden_06">
+        <div class="album-item" data-full="images/album_vugarden_06.JPG" data-animate="zoom-in">
+          <img src="images/album_vugarden_06.JPG" alt="album_vugarden_06">
         </div>
-        <div class="album-item" data-full="images/album_vugarden_07.jpg" data-animate="zoom-in">
-          <img src="images/album_vugarden_07.jpg" alt="album_vugarden_07">
+        <div class="album-item" data-full="images/album_vugarden_07.JPG" data-animate="zoom-in">
+          <img src="images/album_vugarden_07.JPG" alt="album_vugarden_07">
         </div>
-        <div class="album-item" data-full="images/album_vugarden_08.jpg" data-animate="zoom-in">
-          <img src="images/album_vugarden_08.jpg" alt="album_vugarden_08">
+        <div class="album-item" data-full="images/album_vugarden_08.JPG" data-animate="zoom-in">
+          <img src="images/album_vugarden_08.JPG" alt="album_vugarden_08">
         </div>
-        <div class="album-item" data-full="images/album_vugarden_09.jpg" data-animate="zoom-in">
-          <img src="images/album_vugarden_09.jpg" alt="album_vugarden_09">
+        <div class="album-item" data-full="images/album_vugarden_09.JPG" data-animate="zoom-in">
+          <img src="images/album_vugarden_09.JPG" alt="album_vugarden_09">
         </div>
-        <div class="album-item" data-full="images/album_vugarden_10.jpg" data-animate="zoom-in">
-          <img src="images/album_vugarden_10.jpg" alt="album_vugarden_10">
+        <div class="album-item" data-full="images/album_vugarden_10.JPG" data-animate="zoom-in">
+          <img src="images/album_vugarden_10.JPG" alt="album_vugarden_10">
         </div>
-        <div class="album-item" data-full="images/album_vugarden_19.jpeg" data-animate="zoom-in">
-          <img src="images/album_vugarden_19.jpeg" alt="album_vugarden_19">
+        <div class="album-item" data-full="images/album_vugarden_19.JPEG" data-animate="zoom-in">
+          <img src="images/album_vugarden_19.JPEG" alt="album_vugarden_19">
         </div>
        
-        <div class="album-item" data-full="images/album_vugarden_14.jpg" data-animate="zoom-in">
-          <img src="images/album_vugarden_14.jpg" alt="album_vugarden_14">
+        <div class="album-item" data-full="images/album_vugarden_14.JPG" data-animate="zoom-in">
+          <img src="images/album_vugarden_14.JPG" alt="album_vugarden_14">
         </div>
         <div class="album-item" data-full="images/anh_gallery02.JPG" data-animate="zoom-in">
           <img src="images/anh_gallery02.JPG" alt="album_vugarden_20">
         </div>
-        <div class="album-item" data-full="images/album_vugarden_16.jpg" data-animate="zoom-in">
-          <img src="images/album_vugarden_16.jpg" alt="album_vugarden_16">
+        <div class="album-item" data-full="images/album_vugarden_16.JPG" data-animate="zoom-in">
+          <img src="images/album_vugarden_16.JPG" alt="album_vugarden_16">
         </div>
-        <div class="album-item" data-full="images/album_vugarden_17.jpeg" data-animate="zoom-in">
-          <img src="images/album_vugarden_17.jpeg" alt="album_vugarden_17">
+        <div class="album-item" data-full="images/album_vugarden_17.JPEG" data-animate="zoom-in">
+          <img src="images/album_vugarden_17.JPEG" alt="album_vugarden_17">
         </div>
-        <div class="album-item" data-full="images/album_vugarden_11.jpg" data-animate="zoom-in">
-          <img src="images/album_vugarden_11.jpg" alt="album_vugarden_11">
+        <div class="album-item" data-full="images/album_vugarden_11.JPG" data-animate="zoom-in">
+          <img src="images/album_vugarden_11.JPG" alt="album_vugarden_11">
         </div>
-        <div class="album-item" data-full="images/album_vugarden_20.jpeg" data-animate="zoom-in">
-          <img src="images/album_vugarden_20.jpeg" alt="album_vugarden_20">
+        <div class="album-item" data-full="images/album_vugarden_20.JPEG" data-animate="zoom-in">
+          <img src="images/album_vugarden_20.JPEG" alt="album_vugarden_20">
         </div>
-        <div class="album-item" data-full="images/album_vugarden_21.jpg" data-animate="zoom-in">
-          <img src="images/album_vugarden_21.jpg" alt="album_vugarden_21">
+        <div class="album-item" data-full="images/album_vugarden_21.JPG" data-animate="zoom-in">
+          <img src="images/album_vugarden_21.JPG" alt="album_vugarden_21">
         </div>
       
         
@@ -1620,23 +1615,23 @@
       <h3>Concept Việt Phục</h3>
       <div class="wedding-album-vertical">
         
-        <div class="album-item" data-full="images/album_phuctrang_02.jpg" data-animate="zoom-in">
-          <img src="images/album_phuctrang_02.jpg" alt="album_phuctrang_02">
+        <div class="album-item" data-full="images/album_phuctrang_02.JPG" data-animate="zoom-in">
+          <img src="images/album_phuctrang_02.JPG" alt="album_phuctrang_02">
         </div>
-        <div class="album-item" data-full="images/album_phuctrang_03.jpg" data-animate="zoom-in">
-          <img src="images/album_phuctrang_03.jpg" alt="album_phuctrang_03">
+        <div class="album-item" data-full="images/album_phuctrang_03.JPG" data-animate="zoom-in">
+          <img src="images/album_phuctrang_03.JPG" alt="album_phuctrang_03">
         </div>
-        <div class="album-item" data-full="images/album_phuctrang_04.jpg" data-animate="zoom-in">
-          <img src="images/album_phuctrang_04.jpg" alt="album_phuctrang_04">
+        <div class="album-item" data-full="images/album_phuctrang_04.JPG" data-animate="zoom-in">
+          <img src="images/album_phuctrang_04.JPG" alt="album_phuctrang_04">
         </div>
-        <div class="album-item" data-full="images/album_phuctrang_05.jpg" data-animate="zoom-in">
-          <img src="images/album_phuctrang_05.jpg" alt="album_phuctrang_05">
+        <div class="album-item" data-full="images/album_phuctrang_05.JPG" data-animate="zoom-in">
+          <img src="images/album_phuctrang_05.JPG" alt="album_phuctrang_05">
         </div>
-        <div class="album-item" data-full="images/album_phuctrang_06.jpg" data-animate="zoom-in">
-          <img src="images/album_phuctrang_06.jpg" alt="album_phuctrang_06">
+        <div class="album-item" data-full="images/album_phuctrang_06.JPG" data-animate="zoom-in">
+          <img src="images/album_phuctrang_06.JPG" alt="album_phuctrang_06">
         </div>
-        <div class="album-item" data-full="images/album_phuctrang_08.jpeg" data-animate="zoom-in">
-          <img src="images/album_phuctrang_08.jpeg" alt="album_phuctrang_08">
+        <div class="album-item" data-full="images/album_phuctrang_08.JPEG" data-animate="zoom-in">
+          <img src="images/album_phuctrang_08.JPEG" alt="album_phuctrang_08">
         </div>
       </div>
     </section>
@@ -1663,7 +1658,7 @@
           Tên: Trần Trung Tá <br>
           STK: 0257 0769 301
         </div>
-        <img class="qr-code" src="images/qrcode_trungta.jpg" alt="QR code thiệp" />
+        <img class="qr-code" src="images/qrcode_trungta.JPG" alt="QR code thiệp" />
         <div class="qr-note">Hãy quét mã để gửi lời chúc phúc đến đôi uyên ương</div>
         
         <a id="momo-btn" href="momo://wallet" target="_blank">
