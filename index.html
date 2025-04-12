@@ -9,7 +9,6 @@
   <link rel="icon" href="images/logo_damcuoitrantahoangvi.PNG" type="image/png" />
 
   <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Noto+Serif+VN:wght@400;700&display=swap"
     rel="stylesheet"
@@ -76,7 +75,7 @@
       color: var(--text-color);
     }
 
-    /* ========== Logo nổi góc trái (đã tăng kích thước) ========== */
+    /* ========== Logo nổi góc trái ========== */
     .logo-floating {
       position: fixed;
       top: 20px;
@@ -371,7 +370,6 @@
 
     @media (max-width: 768px) {
       .hero-invite-box {
-        display: block;
         left: 20px;
         bottom: 20px;
         max-width: 70%;
@@ -466,10 +464,10 @@
       opacity: 0.9;
     }
 
-    /* ========== COUPLE SECTION (điều chỉnh responsive) ========== */
+    /* ========== COUPLE SECTION ========== */
     .couple-section {
       display: flex;
-      flex-wrap: nowrap; /* Luôn 1 hàng */
+      flex-wrap: nowrap;
       gap: 20px;
       justify-content: center;
       margin-top: 30px;
@@ -514,11 +512,11 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
+    /* Giảm font-size tên Chú rể / Cô dâu trên màn hình nhỏ hơn 600px */
     @media (max-width: 600px) {
       .couple-section {
         flex-wrap: nowrap;
         justify-content: space-around;
-        transform: none;
       }
       .couple-column {
         flex: 0 0 auto;
@@ -527,10 +525,10 @@
         margin: 0 5px;
       }
       .couple-label {
-        font-size: 0.9rem;
+        font-size: 1rem;
       }
       .couple-name {
-        font-size: 1.0rem;
+        font-size: 1.3rem; /* giảm bớt tránh bị xuống dòng */
         line-height: 1.2;
       }
       .couple-img {
@@ -540,8 +538,8 @@
       }
     }
 
-       /* ========== Carousel 3 Ảnh ========== */
-       .carousel-section {
+    /* ========== Carousel 3 Ảnh ========== */
+    .carousel-section {
       padding: 20px 0;
     }
     .carousel-3images {
@@ -753,71 +751,75 @@
     }
 
     /* ========== ALBUM CƯỚI + Lightbox ========== */
-   /* ALBUM CƯỚI + Lightbox */
-.album-section {
-  margin-top: 40px;
-}
+    .album-section {
+      margin-top: 40px;
+    }
+    .album-section h3 {
+      font-size: 1.3rem;
+      color: var(--heading-color);
+      margin: 30px 0 20px;
+      text-transform: uppercase;
+      position: relative;
+      display: inline-block;
+    }
+    .album-section h3::after {
+      content: "";
+      position: absolute;
+      display: block;
+      height: 3px;
+      background: var(--main-color);
+      width: 40%;
+      left: 30%;
+      bottom: -5px;
+      border-radius: 2px;
+    }
 
-.album-section h3 {
-  font-size: 1.3rem;
-  color: var(--heading-color);
-  margin: 30px 0 20px;
-  text-transform: uppercase;
-  position: relative;
-  display: inline-block;
-}
-.album-section h3::after {
-  content: "";
-  position: absolute;
-  display: block;
-  height: 3px;
-  background: var(--main-color);
-  width: 40%;
-  left: 30%;
-  bottom: -5px;
-  border-radius: 2px;
-}
+    /* 
+      Yêu cầu: 
+        - Desktop: 2 cột 
+        - Điện thoại: 3 cột (max-width: 768px)
+    */
+    .wedding-album-landscape,
+    .wedding-album-vertical {
+      display: grid;
+      gap: 20px;
+      justify-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (min-width: 769px) {
+      .wedding-album-landscape,
+      .wedding-album-vertical {
+        /* Desktop => 2 cột */
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 768px) {
+      .wedding-album-landscape,
+      .wedding-album-vertical {
+        /* Điện thoại => 3 cột (theo yêu cầu) */
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
 
-/* 2 layout cho album */
-.wedding-album-landscape,
-.wedding-album-vertical {
-  /* Quan trọng: Hiển thị 2 cột trên desktop, 1 cột trên mobile */
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Mặc định 2 cột */
-  gap: 20px;
-  justify-items: center;
-  max-width: 1200px; /* bạn có thể tùy chỉnh */
-  margin: 0 auto;
-}
+    .album-item {
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .album-item:hover {
+      transform: scale(1.01);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    .album-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
-/* Khi màn hình nhỏ hơn 768px, chỉ hiển thị 1 cột */
-@media (max-width: 768px) {
-  .wedding-album-landscape,
-  .wedding-album-vertical {
-    grid-template-columns: 1fr; /* 1 cột */
-  }
-}
-
-/* Khối ảnh */
-.album-item {
-  width: 100%;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-}
-.album-item:hover {
-  transform: scale(1.01);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-.album-item img {
-  width: 100%;
-  height: auto;
-  display: block;
-  /* Thuộc tính lazy loading */
-  /* Chú ý: Thuộc tính này phải khai báo trực tiếp trong HTML thay vì CSS */
-}
     /* Lightbox Overlay */
     .lightbox-overlay {
       position: fixed;
@@ -910,6 +912,14 @@
       font-size: 0.9rem;
       color: #666;
     }
+
+    /* Nhóm các nút Momo / Copy STK */
+    .qr-button-group {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 15px;
+    }
     #momo-btn {
       background-color: var(--main-color);
       color: #fff;
@@ -919,12 +929,23 @@
       font-size: 1rem;
       border-radius: 5px;
       transition: background 0.3s ease;
-      margin-top: 15px;
-      display: inline-block;
       text-decoration: none;
     }
     #momo-btn:hover {
       background-color: var(--hover-color);
+    }
+    #copy-account-btn {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+    #copy-account-btn:hover {
+      background-color: #555;
     }
 
     /* ========== RSVP ========== */
@@ -1237,7 +1258,7 @@
   <!-- Hiệu ứng lấp lánh -->
   <div id="sparkle-container"></div>
 
-  <!-- Nhạc nền (bỏ autoplay, chỉ loop) -->
+  <!-- Nhạc nền -->
   <audio id="bg-music" src="nhacthiepmoi.mp3" loop></audio>
 
   <!-- ========== Hero Section ========== -->
@@ -1323,7 +1344,7 @@
       </div>
     </section>
 
-    <!-- Thư Mời -->
+    <!-- Thư Mời (Carousel 3 Ảnh) -->
     <section class="section-wrapper carousel-section" data-animate="fade-in-up">
       <h2 class="section-title">Thư Mời</h2>
       <div class="carousel-3images">
@@ -1453,8 +1474,8 @@
       </div>
     </section>
 
-    <!-- ALBUM CƯỚI + Lightbox -->
-    <section class="section-wrapper album-section" data-animate="fade-in-up">
+     <!-- ALBUM CƯỚI + Lightbox -->
+     <section class="section-wrapper album-section" data-animate="fade-in-up">
       <h2 class="section-title">Album Cưới</h2>
 
       <!-- Concept Vũ Garden -->
@@ -1464,6 +1485,34 @@
         </div>
         <div class="album-item" data-full="images/album_vugarden_18.JPEG" data-animate="zoom-in">
           <img src="images/album_vugarden_18.JPEG" alt="album_vugarden_18" loading="lazy">
+        </div>
+       
+      
+      
+       
+     
+      
+        <div class="album-item" data-full="images/album_vugarden_19.JPEG" data-animate="zoom-in">
+          <img src="images/album_vugarden_19.JPEG" alt="album_vugarden_19" loading="lazy">
+        </div>
+        <div class="album-item" data-full="images/album_vugarden_14.JPG" data-animate="zoom-in">
+          <img src="images/album_vugarden_14.JPG" alt="album_vugarden_14" loading="lazy">
+        </div>
+        <div class="album-item" data-full="images/anh_gallery02.JPG" data-animate="zoom-in">
+          <img src="images/anh_gallery02.JPG" alt="album_vugarden_20" loading="lazy">
+        </div>
+        <div class="album-item" data-full="images/album_vugarden_16.JPG" data-animate="zoom-in">
+          <img src="images/album_vugarden_16.JPG" alt="album_vugarden_16" loading="lazy">
+        </div>
+       
+        <div class="album-item" data-full="images/album_vugarden_22.JPEG" data-animate="zoom-in">
+          <img src="images/album_vugarden_22.JPEG" alt="album_vugarden_22" loading="lazy">
+        </div>
+        <div class="album-item" data-full="images/album_vugarden_20.JPEG" data-animate="zoom-in">
+          <img src="images/album_vugarden_20.JPEG" alt="album_vugarden_20" loading="lazy">
+        </div>
+        <div class="album-item" data-full="images/album_vugarden_21.JPG" data-animate="zoom-in">
+          <img src="images/album_vugarden_21.JPG" alt="album_vugarden_21" loading="lazy">
         </div>
         <div class="album-item" data-full="images/album_vugarden_03.JPG" data-animate="zoom-in">
           <img src="images/album_vugarden_03.JPG" alt="album_vugarden_03" loading="lazy">
@@ -1477,6 +1526,12 @@
         <div class="album-item" data-full="images/album_vugarden_06.JPG" data-animate="zoom-in">
           <img src="images/album_vugarden_06.JPG" alt="album_vugarden_06" loading="lazy">
         </div>
+        <div class="album-item" data-full="images/album_vugarden_10.JPG" data-animate="zoom-in">
+          <img src="images/album_vugarden_10.JPG" alt="album_vugarden_10" loading="lazy">
+        </div>
+        <div class="album-item" data-full="images/album_vugarden_17.JPEG" data-animate="zoom-in">
+          <img src="images/album_vugarden_17.JPEG" alt="album_vugarden_17" loading="lazy">
+        </div>
         <div class="album-item" data-full="images/album_vugarden_07.JPG" data-animate="zoom-in">
           <img src="images/album_vugarden_07.JPG" alt="album_vugarden_07" loading="lazy">
         </div>
@@ -1485,33 +1540,6 @@
         </div>
         <div class="album-item" data-full="images/album_vugarden_09.JPG" data-animate="zoom-in">
           <img src="images/album_vugarden_09.JPG" alt="album_vugarden_09" loading="lazy">
-        </div>
-        <div class="album-item" data-full="images/album_vugarden_10.JPG" data-animate="zoom-in">
-          <img src="images/album_vugarden_10.JPG" alt="album_vugarden_10" loading="lazy">
-        </div>
-        <div class="album-item" data-full="images/album_vugarden_19.JPEG" data-animate="zoom-in">
-          <img src="images/album_vugarden_19.JPEG" alt="album_vugarden_19" loading="lazy">
-        </div>
-        <div class="album-item" data-full="images/album_vugarden_14.JPG" data-animate="zoom-in">
-          <img src="images/album_vugarden_14.JPG" alt="album_vugarden_14" loading="lazy">
-        </div>
-        <div class="album-item" data-full="images/anh_gallery02.JPG" data-animate="zoom-in">
-          <img src="images/anh_gallery02.JPG" alt="album_vugarden_20" loading="lazy">
-        </div>
-        <div class="album-item" data-full="images/album_vugarden_16.JPG" data-animate="zoom-in">
-          <img src="images/album_vugarden_16.JPG" alt="album_vugarden_16" loading="lazy">
-        </div>
-        <div class="album-item" data-full="images/album_vugarden_17.JPEG" data-animate="zoom-in">
-          <img src="images/album_vugarden_17.JPEG" alt="album_vugarden_17" loading="lazy">
-        </div>
-        <div class="album-item" data-full="images/album_vugarden_11.JPG" data-animate="zoom-in">
-          <img src="images/album_vugarden_11.JPG" alt="album_vugarden_11" loading="lazy">
-        </div>
-        <div class="album-item" data-full="images/album_vugarden_20.JPEG" data-animate="zoom-in">
-          <img src="images/album_vugarden_20.JPEG" alt="album_vugarden_20" loading="lazy">
-        </div>
-        <div class="album-item" data-full="images/album_vugarden_21.JPG" data-animate="zoom-in">
-          <img src="images/album_vugarden_21.JPG" alt="album_vugarden_21" loading="lazy">
         </div>
       </div>
 
@@ -1539,6 +1567,7 @@
       </div>
     </section>
 
+
     <!-- Lightbox overlay -->
     <div class="lightbox-overlay" id="lightbox">
       <img src="" alt="lightbox-img" id="lightbox-img"/>
@@ -1563,10 +1592,16 @@
         </div>
         <img class="qr-code" src="images/qrcode_trungta.JPG" alt="QR code thiệp" />
         <div class="qr-note">Hãy quét mã để gửi lời chúc phúc đến đôi uyên ương</div>
-        
-        <a id="momo-btn" href="momo://wallet" target="_blank">
-          Mở ví Momo
-        </a>
+
+        <!-- Nút Momo + Sao chép STK -->
+        <div class="qr-button-group">
+          <a id="momo-btn" href="momo://wallet" target="_blank">
+            Mở ví Momo
+          </a>
+          <button id="copy-account-btn" type="button">
+            Sao chép STK
+          </button>
+        </div>
       </div>
     </section>
 
@@ -1681,7 +1716,7 @@
       const heart = document.createElement('div');
       heart.classList.add('heart');
       heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.bottom = '-40px'; // start from bottom
+      heart.style.bottom = '-40px';
       heartsContainer.appendChild(heart);
       const duration = Math.random() * 3 + 4; // 4-7s
       heart.style.animationDuration = duration + 's';
@@ -1721,7 +1756,7 @@
       sparkle.style.left = Math.random() * 100 + 'vw';
       sparkle.style.top = Math.random() * 100 + 'vh';
       sparkleContainer.appendChild(sparkle);
-      const duration = Math.random() * 3 + 2; // 2-5s
+      const duration = Math.random() * 3 + 2;
       sparkle.style.animationDuration = duration + 's';
       sparkle.addEventListener('animationend', () => {
         sparkle.remove();
@@ -1766,6 +1801,19 @@
       if(e.target === lightbox || e.target === lightboxImg){
         lightbox.classList.remove('show');
       }
+    });
+
+    /* ========== Sao chép STK ========== */
+    const copyAccountBtn = document.getElementById('copy-account-btn');
+    copyAccountBtn.addEventListener('click', () => {
+      const accountNumber = "0257 0769 301"; 
+      navigator.clipboard.writeText(accountNumber)
+        .then(() => {
+          alert("Đã sao chép STK vào clipboard!");
+        })
+        .catch(err => {
+          alert("Không thể sao chép!");
+        });
     });
 
     /* ========== Form RSVP (Google Apps Script) ========== */
